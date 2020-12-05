@@ -1,0 +1,22 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "@assets": "./assets",
+          "@components": "./components",
+          "@store": "./store"
+        }
+      }
+    ],
+    [
+      "inline-react-svg",
+      {
+        "svgo": false
+      }
+    ]
+  ]
+}
