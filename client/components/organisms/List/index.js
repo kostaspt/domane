@@ -1,5 +1,5 @@
-import { searchSelector } from '@store/search/slice';
 import Result from '@components/molecules/Result';
+import { searchSelector } from '@store/search/slice';
 import { Grid } from 'grommet';
 import React from 'react';
 import { useSelector } from 'react-redux';

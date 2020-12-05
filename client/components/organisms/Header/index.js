@@ -1,5 +1,5 @@
-import { updateQuery } from '@store/search/slice';
 import Search from '@components/molecules/Search';
+import { updateQuery } from '@store/search/slice';
 import { Anchor, Box, Heading } from 'grommet';
 import Link from 'next/link';
 import { useCallback } from 'react';
