@@ -16,7 +16,7 @@ export default function HomePage() {
       </Head>
 
       <Main alignContent="center" width="600px" margin={{ vertical: 0, horizontal: 'auto' }}>
-        <Box margin={{ bottom: 'small' }}>
+        <Box margin={{ vertical: 'medium' }}>
           <Header />
         </Box>
         <Search />
