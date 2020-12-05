@@ -9,13 +9,9 @@ const { THEME } = publicRuntimeConfig;
 export default function CustomApp({ Component, pageProps }) {
   return (
     <Grommet theme={THEME}>
-      <ResponsiveContext.Consumer>
-        {(size) => (
-          <Provider store={store}>
-            <Component size={size} {...pageProps} />
-          </Provider>
-        )}
-      </ResponsiveContext.Consumer>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </Grommet>
   );
 }

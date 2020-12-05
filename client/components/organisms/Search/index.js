@@ -1,13 +1,16 @@
+import { updateQuery } from '@store/search/slice';
 import { Box, TextInput } from 'grommet';
 import { Search as SearchIcon } from 'grommet-icons';
 import { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-export default function Search({ handleQueryChanged }) {
+export default function Search() {
   const [query, setQuery] = useState('');
 
-  const handleChange = useCallback((event) => setQuery(event.target.value), []);
+  useEffect(() => dispatch(updateQuery(query)), [query]);
 
-  useEffect(() => handleQueryChanged(query), [query]);
+  const dispatch = useDispatch();
+  const handleQueryChanged = useCallback((event) => setQuery(event.target.value), []);
 
   return (
     <Box
@@ -19,7 +22,7 @@ export default function Search({ handleQueryChanged }) {
       width="large"
     >
       <SearchIcon color="brand" />
-      <TextInput plain placeholder="" value={query} onChange={handleChange} />
+      <TextInput plain placeholder="" value={query} onChange={handleQueryChanged} />
     </Box>
   );
 }
