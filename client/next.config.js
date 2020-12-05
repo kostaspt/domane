@@ -6,6 +6,16 @@ module.exports = (phase) => {
   return {
     publicRuntimeConfig: {
       API_URL: isProd ? '/api' : 'http://localhost:4000',
+      THEME: {
+        global: {
+          colors: {
+            brand: '#10B981',
+          },
+          font: {
+            family: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";`,
+          },
+        },
+      },
     },
   };
 };

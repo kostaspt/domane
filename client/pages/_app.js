@@ -1,21 +1,14 @@
 import { Grommet, ResponsiveContext } from 'grommet';
+import getConfig from 'next/config'
 import { Provider } from 'react-redux';
 import store from '../store';
 
-const theme = {
-  global: {
-    colors: {
-      brand: '#10B981',
-    },
-    font: {
-      family: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";`,
-    },
-  },
-};
+const {publicRuntimeConfig} = getConfig()
+const {THEME} = publicRuntimeConfig
 
 export default function CustomApp({ Component, pageProps }) {
   return (
-    <Grommet theme={theme}>
+    <Grommet theme={THEME}>
       <ResponsiveContext.Consumer>
         {(size) => (
           <Provider store={store}>
