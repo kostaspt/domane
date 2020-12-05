@@ -1,10 +1,10 @@
 import { Grommet, ResponsiveContext } from 'grommet';
-import getConfig from 'next/config'
+import getConfig from 'next/config';
 import { Provider } from 'react-redux';
 import store from '../store';
 
-const {publicRuntimeConfig} = getConfig()
-const {THEME} = publicRuntimeConfig
+const { publicRuntimeConfig } = getConfig();
+const { THEME } = publicRuntimeConfig;
 
 export default function CustomApp({ Component, pageProps }) {
   return (

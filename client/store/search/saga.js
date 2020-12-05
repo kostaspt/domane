@@ -5,7 +5,7 @@ import { fetchDataSuccess, name } from './slice';
 function* loadData({ payload: query }) {
   if (query.length === 0) {
     yield put(fetchDataSuccess([]));
-    return
+    return;
   }
 
   const { data } = yield call(search, query);

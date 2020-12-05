@@ -4,14 +4,14 @@ const adapter = createEntityAdapter({
   selectId: (result) => result.position,
 });
 
-export const name = 'search'
+export const name = 'search';
 
 const initialState = {
   ids: [],
   entities: {},
   query: '',
   loading: false,
-}
+};
 
 const searchSlice = createSlice({
   name,
@@ -28,7 +28,7 @@ const searchSlice = createSlice({
   },
 });
 
-export const searchSelector = adapter.getSelectors((state) => state[name])
+export const searchSelector = adapter.getSelectors((state) => state[name]);
 
 const { actions, reducer } = searchSlice;
 export const { fetchDataSuccess, updateQuery } = actions;
