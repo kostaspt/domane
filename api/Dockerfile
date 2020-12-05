@@ -1,0 +1,22 @@
+### Build
+FROM golang:1.15-alpine as build
+WORKDIR /go/src/app
+
+# Install system dependencies
+RUN apk add --no-cache make
+
+# Install dependencies
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Generate production build
+COPY . .
+RUN make build
+
+### Serve
+FROM alpine:3.12
+WORKDIR /app
+
+COPY --from=build /go/src/app/bin/domane /app
+
+CMD ["./domane", "start"]

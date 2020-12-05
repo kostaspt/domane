@@ -1,0 +1,30 @@
+name: Server
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/server.yml
+      - docker/**
+      - docker-compose.yml
+
+jobs:
+  cd:
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DOMANE_SSH_HOST }}
+          username: ${{ secrets.DOMANE_SSH_USER }}
+          passphrase: ${{ secrets.DOMANE_SSH_PASSPHRASE }}
+          key: ${{ secrets.DOMANE_SSH_PRIVATE_KEY}}
+          script: |
+            cd /app && \
+            git stash && \
+            git checkout main && \
+            git reset --hard origin/main && \
+            git pull --rebase && \
+            docker-compose up -d --force-recreate;
