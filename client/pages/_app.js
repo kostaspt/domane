@@ -13,7 +13,7 @@ const theme = {
   },
 };
 
-export default function Domane({ Component, pageProps }) {
+export default function CustomApp({ Component, pageProps }) {
   return (
     <Grommet theme={theme}>
       <ResponsiveContext.Consumer>
