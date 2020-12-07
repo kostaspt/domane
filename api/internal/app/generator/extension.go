@@ -1,10 +1,6 @@
 package generator
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"regexp"
 
 	"github.com/kostaspt/domane-server/internal/app/parser"
@@ -79,30 +75,10 @@ func ShortExtensions(text string) Results {
 }
 
 func AllExtensions() []string {
-	path, err := filepath.Abs("../../../data/tld.json")
-	if err != nil {
-		return nil
-	}
+	allExtensions := allExtensions()
 
-	f, err := os.Open(path)
-	if err != nil {
-		return nil
-	}
-	defer f.Close()
-
-	body, err := ioutil.ReadAll(f)
-	if err != nil {
-		return nil
-	}
-
-	var extensions map[string]string
-	err = json.Unmarshal(body, &extensions)
-	if err != nil {
-		return nil
-	}
-
-	es := make([]string, 0, len(extensions))
-	for _, tx := range extensions {
+	es := make([]string, 0, len(allExtensions))
+	for _, tx := range allExtensions {
 		es = append(es, tx)
 	}
 
