@@ -8,7 +8,7 @@ import (
 	elog "github.com/labstack/gommon/log"
 	"github.com/ziflex/lecho/v2"
 
-	handler "github.com/kostaspt/domane-server/internal/http/handler/v1"
+	handler "github.com/kostaspt/domane/api/internal/http/handler/v1"
 )
 
 func Start() error {

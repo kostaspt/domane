@@ -3,7 +3,7 @@ package generator
 import (
 	"regexp"
 
-	"github.com/kostaspt/domane-server/internal/app/parser"
+	"github.com/kostaspt/domane/api/internal/app/parser"
 )
 
 func CommonExtensions(text string) Results {

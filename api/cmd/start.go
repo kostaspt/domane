@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/kostaspt/domane-server/internal/http/server"
+	"github.com/kostaspt/domane/api/internal/http/server"
 )
 
 func StartCmd() *cobra.Command {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kostaspt/domane-server/cmd"
-	"github.com/kostaspt/domane-server/config"
+	"github.com/kostaspt/domane/api/cmd"
+	"github.com/kostaspt/domane/api/config"
 )
 
 func main() {

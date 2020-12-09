@@ -7,7 +7,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"github.com/kostaspt/domane-server/internal/app/generator"
+	"github.com/kostaspt/domane/api/internal/app/generator"
 )
 
 type SearchRequest struct {
