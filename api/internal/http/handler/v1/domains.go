@@ -11,10 +11,10 @@ import (
 )
 
 type SearchRequest struct {
-	Query string `query:"query"`
+	Query string `json:"query"`
 }
 
-func (Handler) SearchExtensions(ctx echo.Context) error {
+func (Handler) DomainsExtensions(ctx echo.Context) error {
 	req := SearchRequest{}
 	if err := ctx.Bind(&req); err != nil {
 		return err

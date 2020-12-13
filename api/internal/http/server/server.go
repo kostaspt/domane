@@ -29,7 +29,7 @@ func Start() error {
 	h := handler.New()
 
 	e.GET("/", h.RootIndex)
-	e.GET("/search/extensions", h.SearchExtensions)
+	e.POST("/domains/extensions", h.DomainsExtensions)
 
 	// Start server
 	return e.Start(":4000")
