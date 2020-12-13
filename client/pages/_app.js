@@ -1,4 +1,4 @@
-import { Grommet, ResponsiveContext } from 'grommet';
+import { Grommet } from 'grommet';
 import getConfig from 'next/config';
 import { Provider } from 'react-redux';
 import store from '../store';
