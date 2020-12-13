@@ -12,8 +12,8 @@ defaults:
     working-directory: api
 
 jobs:
-  ci:
-    name: Continuous Integration
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -36,9 +36,9 @@ jobs:
       - name: Run tests
         run: make test
 
-  cd:
-    name: Continuous Deployment
-    needs: ci
+  deploy:
+    name: Deploy
+    needs: test
     timeout-minutes: 10
 
     runs-on: ubuntu-latest

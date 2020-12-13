@@ -9,8 +9,8 @@ on:
       - docker-compose.yml
 
 jobs:
-  cd:
-    name: Continuous Deployment
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
