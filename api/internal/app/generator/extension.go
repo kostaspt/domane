@@ -2,14 +2,12 @@ package generator
 
 import (
 	"regexp"
-
-	"github.com/kostaspt/domane/api/internal/app/parser"
 )
 
 func CommonExtensions(text string) Results {
 	extensions := TopExtensions()
 
-	text = parser.Clean(text)
+	text = Clean(text)
 
 	results := make(Results, len(extensions))
 	for i, e := range extensions {
@@ -29,7 +27,7 @@ func CommonExtensions(text string) Results {
 func CommonExtensionsHyphenated(text string) Results {
 	extensions := TopExtensions()
 
-	text = parser.Hyphenate(text)
+	text = Hyphenate(text)
 
 	results := make(Results, len(extensions))
 	for i, e := range extensions {
@@ -49,7 +47,7 @@ func CommonExtensionsHyphenated(text string) Results {
 func ShortExtensions(text string) Results {
 	extensions := AllExtensions()
 
-	text = parser.Clean(text)
+	text = Clean(text)
 
 	results := make(Results, 0, len(extensions))
 	for _, e := range extensions {
