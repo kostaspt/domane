@@ -1,5 +1,5 @@
 import LogoSvg from '@assets/logo.svg';
-import { updateQuery } from '@store/search/slice';
+import { update as updateQuery } from '@store/query/slice';
 import { Anchor, Header as GrommetHeader } from 'grommet';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';

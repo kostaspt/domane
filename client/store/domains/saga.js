@@ -1,6 +1,7 @@
+import { name as querySliceName } from '@store/query/slice';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { search } from './api';
-import { fetchDataSuccess, name } from './slice';
+import { fetchDataSuccess } from './slice';
 
 function* loadData({ payload: query }) {
   if (query.length === 0) {
@@ -13,5 +14,5 @@ function* loadData({ payload: query }) {
 }
 
 export default function* searchSagas() {
-  yield takeLatest(`${name}/updateQuery`, loadData);
+  yield takeLatest(`${querySliceName}/update`, loadData);
 }

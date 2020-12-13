@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
-import searchSagas from './search/saga';
+import domainsSagas from './domains/saga';
 
 export default function* rootSaga() {
-  yield all([searchSagas()]);
+  yield all([domainsSagas()]);
 }

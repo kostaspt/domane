@@ -1,6 +1,8 @@
-import searchReducer from '@store/search/slice';
 import { combineReducers } from '@reduxjs/toolkit';
+import domainsReducer, { name as domainsSliceName } from '@store/domains/slice';
+import queryReducer, { name as querySliceName } from '@store/query/slice';
 
 export default combineReducers({
-  search: searchReducer,
+  [domainsSliceName]: domainsReducer,
+  [querySliceName]: queryReducer,
 });

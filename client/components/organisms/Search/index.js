@@ -1,14 +1,14 @@
-import { name as searchName, updateQuery } from '@store/search/slice';
+import { update as updateQuery, name as querySliceName } from '@store/query/slice';
 import { Box, TextInput } from 'grommet';
 import { Search as SearchIcon } from 'grommet-icons';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Search() {
-  const query = useSelector((s) => s[searchName].query);
+  const query = useSelector((s) => s[querySliceName].text);
 
   const dispatch = useDispatch();
-  const handleQueryChanged = useCallback((event) => dispatch(updateQuery(event.target.value)), []);
+  const handleQueryChanged = useCallback((e) => dispatch(updateQuery(e.target.value)), []);
 
   return (
     <Box

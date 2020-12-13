@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const adapter = createEntityAdapter({
-  selectId: (result) => result.position,
+  selectId: (result) => `${result.position}-${result.domain}`,
 });
 
-export const name = 'search';
+export const name = 'domains';
 
 const initialState = {
   ids: [],
@@ -13,23 +13,22 @@ const initialState = {
   loading: false,
 };
 
-const searchSlice = createSlice({
+const slice = createSlice({
   name,
   initialState,
   reducers: {
+    fetchData(state) {
+      state.loading = true;
+    },
     fetchDataSuccess(state, { payload }) {
       state.loading = false;
       adapter.setAll(state, payload);
     },
-    updateQuery(state, { payload }) {
-      state.loading = true;
-      state.query = payload;
-    },
   },
 });
 
-export const searchSelector = adapter.getSelectors((state) => state[name]);
+export const domainsSelector = adapter.getSelectors((state) => state[name]);
 
-const { actions, reducer } = searchSlice;
-export const { fetchDataSuccess, updateQuery } = actions;
+const { actions, reducer } = slice;
+export const { fetchDataSuccess } = actions;
 export default reducer;
