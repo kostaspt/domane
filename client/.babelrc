@@ -17,6 +17,12 @@
       {
         "svgo": false
       }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
     ]
   ]
 }
