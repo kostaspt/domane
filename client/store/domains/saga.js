@@ -1,9 +1,11 @@
 import { name as querySliceName } from '@store/query/slice';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { search } from './api';
-import { fetchDataSuccess } from './slice';
+import { fetchDataSuccess, name as domainsSliceName } from './slice';
 
-function* loadData({ payload: query }) {
+function* loadData() {
+  const query = yield select((s) => s[querySliceName].text ?? '');
+
   if (query.length === 0) {
     yield put(fetchDataSuccess([]));
     return;
@@ -13,6 +15,6 @@ function* loadData({ payload: query }) {
   yield put(fetchDataSuccess(data));
 }
 
-export default function* searchSagas() {
-  yield takeLatest(`${querySliceName}/update`, loadData);
+export default function* rootSaga() {
+  yield takeLatest(`${domainsSliceName}/fetchData`, loadData);
 }

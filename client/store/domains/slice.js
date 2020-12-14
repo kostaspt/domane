@@ -30,5 +30,5 @@ const slice = createSlice({
 export const domainsSelector = adapter.getSelectors((state) => state[name]);
 
 const { actions, reducer } = slice;
-export const { fetchDataSuccess } = actions;
+export const { fetchData, fetchDataSuccess } = actions;
 export default reducer;
