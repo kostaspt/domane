@@ -1,5 +1,5 @@
 ### Build
-FROM node:15.3-alpine as builder
+FROM node:15.4.0-alpine as builder
 
 WORKDIR /usr/src/app
 
@@ -15,7 +15,7 @@ RUN yarn build
 RUN yarn install --production
 
 ### Serve
-FROM node:15.3-alpine
+FROM node:15.4.0-alpine
 
 WORKDIR /usr/src/app
 
