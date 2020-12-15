@@ -6,6 +6,10 @@ on:
     paths:
       - .github/workflows/api.yml
       - api/**
+  pull_request:
+    paths:
+      - .github/workflows/api.yml
+      - api/**
 
 defaults:
   run:
@@ -42,6 +46,8 @@ jobs:
     timeout-minutes: 10
 
     runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout
