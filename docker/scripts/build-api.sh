@@ -2,4 +2,4 @@
 
 BASEDIR=$(dirname "$0")
 cd $BASEDIR/../../api;
-docker build -t docker.pkg.github.com/kostaspt/domane/domane-api:latest .
+docker build -t ghcr.io/kostaspt/domane-api:latest .

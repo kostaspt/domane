@@ -1,6 +1,8 @@
 ### Build
 FROM node:15.4.0-alpine as builder
 
+LABEL org.opencontainers.image.source https://github.com/kostaspt/domane
+
 WORKDIR /usr/src/app
 
 # Install dependencies
