@@ -28,4 +28,4 @@ COPY --from=builder /usr/src/app/public ./public
 
 EXPOSE $CLIENT_PORT
 
-CMD ["yarn", "start"]
+CMD ["yarn", "start", "-p", "${CLIENT_PORT}"]
