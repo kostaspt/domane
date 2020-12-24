@@ -8,7 +8,8 @@ import rootSaga from './saga';
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [camelMiddleware(), ...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
 
-const devMode = process.env.NODE_ENV !== 'production';
+// const devMode = process.env.NODE_ENV !== 'production';
+const devMode = true;
 if (devMode) {
   middleware.push(logger);
 }
