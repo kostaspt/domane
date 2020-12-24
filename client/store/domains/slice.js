@@ -9,7 +9,6 @@ export const name = 'domains';
 const initialState = {
   ids: [],
   entities: {},
-  query: '',
   loading: false,
 };
 
