@@ -24,4 +24,4 @@ COPY --from=build /go/src/app/bin/domane /app
 
 EXPOSE $API_PORT
 
-CMD ["./domane", "start", "-p", "${API_PORT}"]
+CMD ["sh" , "-c", "./domane start -p ${API_PORT}"]
