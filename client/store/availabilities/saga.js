@@ -10,25 +10,31 @@ const { API_URL } = publicRuntimeConfig;
 
 let ws;
 
-function createEventChannel() {
-  return eventChannel((emit) => {
-    const wsURL = API_URL.replace('http', 'ws');
+function createWsConnection(emit) {
+  const wsURL = API_URL.replace('http', 'ws');
 
-    ws = new WebSocket(`${wsURL}/ws/availabilities`);
+  ws = new WebSocket(`${wsURL}/ws/availabilities`);
 
-    ws.onmessage = (lastMessage) => {
-      try {
-        const data = JSON.parse(lastMessage?.data);
-        if (data?.domain) {
-          return emit({ data });
-        }
-      } catch (e) {
-        console.debug(e);
+  ws.onmessage = (lastMessage) => {
+    try {
+      const data = JSON.parse(lastMessage?.data);
+      if (data?.domain) {
+        return emit({ data });
       }
-    };
+    } catch (e) {
+      console.debug(e);
+    }
+  };
 
-    return () => ws.close();
-  });
+  ws.onclose = () => {
+    setTimeout(() => createWsConnection(), 3000);
+  };
+
+  return () => ws.close();
+}
+
+function createEventChannel() {
+  return eventChannel((emit) => createWsConnection(emit));
 }
 
 function* setupConnection() {
