@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const adapter = createEntityAdapter({
-  selectId: (result) => `${result.position}-${result.domain}`,
+  selectId: (entity) => `${entity.position}-${entity.domain}`,
 });
 
 export const name = 'domains';
