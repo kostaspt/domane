@@ -1,7 +1,7 @@
 ### Build
 FROM golang:1.15-alpine as build
 
-LABEL org.opencontainers.image.source https://github.com/kostaspt/domane
+LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
 WORKDIR /go/src/app
 

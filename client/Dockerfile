@@ -1,7 +1,7 @@
 ### Build
 FROM node:15.5.0-alpine as builder
 
-LABEL org.opencontainers.image.source https://github.com/kostaspt/domane
+LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
 WORKDIR /usr/src/app
 
