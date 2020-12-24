@@ -13,7 +13,7 @@ const Container = styled(Main)`
 `;
 
 export default function HomePage() {
-  const hasResults = useSelector((s) => domainsSelector.selectTotal(s)) > 0;
+  const hasResults = useSelector(domainsSelector.selectTotal) > 0;
 
   return (
     <div className="container">

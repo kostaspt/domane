@@ -1,11 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
+import camelMiddleware from 'redux-camel';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducer';
 import rootSaga from './saga';
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
+const middleware = [camelMiddleware(), ...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
 
 const devMode = process.env.NODE_ENV !== 'production';
 if (devMode) {

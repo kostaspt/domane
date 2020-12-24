@@ -6,11 +6,17 @@ import (
 )
 
 func SetupViper() {
-	viper.AutomaticEnv()
+	initViper()
 
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			log.Fatal().Err(err)
 		}
 	}
+}
+
+func initViper() {
+	viper.AutomaticEnv()
+
+	viper.SetDefault("VERSION", "v1.0")
 }

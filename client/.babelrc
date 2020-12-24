@@ -8,6 +8,7 @@
         "alias": {
           "@assets": "./assets",
           "@components": "./components",
+          "@hooks": "./hooks",
           "@store": "./store"
         }
       }

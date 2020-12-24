@@ -4,7 +4,7 @@ const adapter = createEntityAdapter({
   selectId: (entity) => `${entity.position}-${entity.domain}`,
 });
 
-export const name = 'domains';
+const name = 'domains';
 
 const initialState = {
   ids: [],
@@ -28,6 +28,6 @@ const slice = createSlice({
 
 export const domainsSelector = adapter.getSelectors((state) => state[name]);
 
-const { actions, reducer } = slice;
-export const { fetchData, fetchDataSuccess } = actions;
-export default reducer;
+export const domainsSliceName = name;
+export const { fetchData: fetchDomains, fetchDataSuccess: fetchDomainsSuccess } = slice.actions;
+export default slice.reducer;

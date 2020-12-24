@@ -1,17 +1,19 @@
 import Result from '@components/molecules/Result';
+import { availabilitiesSelector } from '@store/availabilities/slice';
 import { domainsSelector } from '@store/domains/slice';
 import { Box } from 'grommet';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function List() {
-  const positions = useSelector((s) => domainsSelector.selectIds(s));
-  const results = useSelector((s) => domainsSelector.selectEntities(s));
+  const ids = useSelector(domainsSelector.selectIds);
+  const domains = useSelector(domainsSelector.selectEntities);
+  const availabilities = useSelector(availabilitiesSelector.selectEntities);
 
   return (
     <Box pad="medium">
-      {positions.map((position) => (
-        <Result data={results[position]} key={position} />
+      {ids.map((id) => (
+        <Result domain={domains[id].domain} isAvailable={availabilities[domains[id].domain]?.isAvailable} key={id} />
       ))}
     </Box>
   );

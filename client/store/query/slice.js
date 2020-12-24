@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const name = 'query';
+const name = 'query';
 
 const initialState = {
   text: '',
@@ -16,6 +16,6 @@ const slice = createSlice({
   },
 });
 
-const { actions, reducer } = slice;
-export const { update } = actions;
-export default reducer;
+export const querySliceName = name;
+export const { update: updateQuery } = slice.actions;
+export default slice.reducer;

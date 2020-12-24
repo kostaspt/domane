@@ -1,4 +1,4 @@
-package v1
+package http
 
 type Handler struct {}
 

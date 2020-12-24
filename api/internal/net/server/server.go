@@ -10,7 +10,8 @@ import (
 	"github.com/spf13/viper"
 	"github.com/ziflex/lecho/v2"
 
-	handler "github.com/kostaspt/domane/api/internal/http/handler/v1"
+	HTTPHandler "github.com/kostaspt/domane/api/internal/net/http"
+	WSHandler "github.com/kostaspt/domane/api/internal/net/websockets"
 )
 
 func Start() error {
@@ -18,7 +19,12 @@ func Start() error {
 
 	// Middleware
 	e.Use(middleware.Recover())
-	e.Use(middleware.CORS())
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{
+			"http://localhost:3000",
+			"https://domane.io",
+		},
+	}))
 	e.Logger = lecho.New(
 		os.Stdout,
 		lecho.WithLevel(elog.DEBUG),
@@ -27,11 +33,14 @@ func Start() error {
 	)
 	e.HideBanner = true
 
-	// Routes
-	h := handler.New()
+	// HTTP
+	http := HTTPHandler.New()
+	e.GET("/", http.RootIndex)
+	e.POST("/domains/extensions", http.DomainsExtensions)
 
-	e.GET("/", h.RootIndex)
-	e.POST("/domains/extensions", h.DomainsExtensions)
+	// WebSockets
+	ws := WSHandler.New()
+	e.GET("/ws/availabilities", ws.Availabilities)
 
 	// Start server
 	return e.Start(fmt.Sprintf(":%d", viper.GetInt("port")))

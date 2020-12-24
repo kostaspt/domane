@@ -1,4 +1,4 @@
-import { update as updateQuery, name as querySliceName } from '@store/query/slice';
+import { querySliceName, updateQuery } from '@store/query/slice';
 import { Box, TextInput } from 'grommet';
 import { Search as SearchIcon } from 'grommet-icons';
 import { useCallback } from 'react';
