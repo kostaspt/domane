@@ -10,6 +10,7 @@ updates:
     directory: "/api"
     schedule:
       interval: "weekly"
+      day: "saturday"
 
   # Client
   - package-ecosystem: "npm"
@@ -20,3 +21,4 @@ updates:
     directory: "/client"
     schedule:
       interval: "weekly"
+      day: "saturday"
