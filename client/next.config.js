@@ -5,7 +5,7 @@ module.exports = (phase) => {
 
   return {
     publicRuntimeConfig: {
-      API_URL: isProd ? '/api' : 'http://localhost:4000',
+      API_URL: isProd ? 'https://domane.io/api' : 'http://localhost:4000',
       THEME: {
         global: {
           colors: {
