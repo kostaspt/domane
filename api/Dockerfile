@@ -22,4 +22,6 @@ WORKDIR /app
 
 COPY --from=build /go/src/app/bin/domane /app
 
-CMD ["./domane", "start"]
+EXPOSE $API_PORT
+
+CMD ["./domane", "start", "-p", "${API_PORT}"]

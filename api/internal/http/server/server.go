@@ -1,11 +1,13 @@
 package server
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	elog "github.com/labstack/gommon/log"
+	"github.com/spf13/viper"
 	"github.com/ziflex/lecho/v2"
 
 	handler "github.com/kostaspt/domane/api/internal/http/handler/v1"
@@ -32,5 +34,5 @@ func Start() error {
 	e.POST("/domains/extensions", h.DomainsExtensions)
 
 	// Start server
-	return e.Start(":4000")
+	return e.Start(fmt.Sprintf(":%d", viper.GetInt("port")))
 }
