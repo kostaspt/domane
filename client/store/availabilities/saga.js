@@ -4,41 +4,35 @@ import { eventChannel } from 'redux-saga';
 import { call, delay, fork, put, select, take, takeLatest } from 'redux-saga/effects';
 import { availabilitiesSelector, upsertAvailability } from './slice';
 import isNode from 'detect-node';
+import ReconnectingWebSocket from 'reconnecting-websocket';
 
 const { publicRuntimeConfig } = getConfig();
 const { API_URL } = publicRuntimeConfig;
 
 let ws;
 
-function createWsConnection(emit) {
-  const wsURL = API_URL.replace('http', 'ws');
-
-  ws = new WebSocket(`${wsURL}/ws/availabilities`);
-
-  ws.onmessage = (lastMessage) => {
-    try {
-      const data = JSON.parse(lastMessage?.data);
-      if (data?.domain) {
-        return emit({ data });
-      }
-    } catch (e) {
-      console.debug(e);
-    }
-  };
-
-  ws.onclose = () => {
-    setTimeout(() => createWsConnection(), 3000);
-  };
-
-  return () => ws.close();
-}
-
 function createEventChannel() {
-  return eventChannel((emit) => createWsConnection(emit));
+  return eventChannel((emit) => {
+    ws.addEventListener('message', (lastMessage) => {
+      try {
+        const data = JSON.parse(lastMessage?.data);
+        if (data?.domain) {
+          return emit({ data });
+        }
+      } catch (e) {
+        console.debug(e);
+      }
+    });
+
+    return () => ws.close();
+  });
 }
 
 function* setupConnection() {
   if (isNode) return;
+
+  const wsURL = API_URL.replace('http', 'ws');
+  ws = new ReconnectingWebSocket(`${wsURL}/ws/availabilities`);
 
   const channel = yield call(createEventChannel);
   while (true) {
