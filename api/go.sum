@@ -122,6 +122,8 @@ github.com/likexian/whois-go v1.7.2 h1:a8qrwkswABg6iaOmpsmeLEUsYg99EP99QzSGjZY9M
 github.com/likexian/whois-go v1.7.2/go.mod h1:jSJV7lvd6M6XuPdeMbKNTKBtV31ApQ3WVLz9R2Haqgw=
 github.com/likexian/whois-parser-go v1.15.1 h1:IqGTdKYHxi+c7zNR6GR4s1HUKD+C/pFDT6yeyEfaAUQ=
 github.com/likexian/whois-parser-go v1.15.1/go.mod h1:zbLK4/FJW/zO2K5wZmHe+Fu6q5JygxJg+cQkYPA3nNI=
+github.com/likexian/whois-parser-go v1.15.2 h1:132qACv2kBoWSHMWs6M09pnZd47kn/Pm4ViRod1xtI8=
+github.com/likexian/whois-parser-go v1.15.2/go.mod h1:zbLK4/FJW/zO2K5wZmHe+Fu6q5JygxJg+cQkYPA3nNI=
 github.com/magiconair/properties v1.8.1 h1:ZC2Vc7/ZFkGmsVC9KvOjumD+G5lXy2RtTKyzRKO2BQ4=
 github.com/magiconair/properties v1.8.1/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
