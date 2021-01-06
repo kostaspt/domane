@@ -1,5 +1,5 @@
 ### Build
-FROM node:15.5.0-alpine as builder
+FROM node:15.5.1-alpine as builder
 
 LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
@@ -17,7 +17,7 @@ RUN yarn build
 RUN yarn install --production
 
 ### Serve
-FROM node:15.5.0-alpine
+FROM node:15.5.1-alpine
 
 WORKDIR /usr/src/app
 
