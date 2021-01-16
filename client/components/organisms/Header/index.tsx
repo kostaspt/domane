@@ -14,7 +14,7 @@ export default function Header() {
   const handleClick = useCallback(() => dispatch(updateQuery('')), []);
 
   return (
-    <Box display="flex" justifyContent="space-between">
+    <Box as="header" display="flex" justifyContent="space-between">
       <Link onClick={handleClick}>
         <StyledLogo height="auto" width={32} />
       </Link>

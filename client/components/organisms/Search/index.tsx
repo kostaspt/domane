@@ -17,9 +17,11 @@ export default function Search() {
         <Input
           borderColor="gray.500"
           borderRadius="full"
-          placeholder="Search..."
+          placeholder="Search for domain..."
           onChange={handleQueryChanged}
           value={query}
+          type="text"
+          aria-label="Search for domain:"
         />
       </InputGroup>
     </Stack>
