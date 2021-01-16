@@ -1,6 +1,6 @@
+import { Search2Icon } from '@chakra-ui/icons';
+import { Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react';
 import { selectQueryText, updateQuery } from '@store/query/slice';
-import { Box, TextInput } from 'grommet';
-import { Search as SearchIcon } from 'grommet-icons';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,16 +11,17 @@ export default function Search() {
   const handleQueryChanged = useCallback((e) => dispatch(updateQuery(e.target.value)), []);
 
   return (
-    <Box
-      align="center"
-      border={{ side: 'all' }}
-      direction="row"
-      pad={{ horizontal: 'small', vertical: 'xsmall' }}
-      round="9999px"
-      width="large"
-    >
-      <SearchIcon color="brand" />
-      <TextInput plain placeholder="" value={query} onChange={handleQueryChanged} />
-    </Box>
+    <Stack width="100%" spacing={4}>
+      <InputGroup>
+        <InputLeftElement pointerEvents="none" children={<Search2Icon color="brand.500" />} />
+        <Input
+          borderColor="gray.500"
+          borderRadius="full"
+          placeholder="Search..."
+          onChange={handleQueryChanged}
+          value={query}
+        />
+      </InputGroup>
+    </Stack>
   );
 }

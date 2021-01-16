@@ -1,18 +1,21 @@
-import { Grommet } from 'grommet';
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
-import getConfig from 'next/config';
 import { Provider } from 'react-redux';
 import store from '../store';
-
-const { publicRuntimeConfig } = getConfig();
-const { THEME } = publicRuntimeConfig;
+import theme from '../theme';
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <Grommet theme={THEME}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </Grommet>
+    <ChakraProvider resetCSS theme={theme}>
+      <ColorModeProvider
+        options={{
+          useSystemColorMode: true,
+        }}
+      >
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </ColorModeProvider>
+    </ChakraProvider>
   );
 }

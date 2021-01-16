@@ -12,11 +12,14 @@
     }
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.3",
+    "@chakra-ui/react": "^1.1.4",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
     "detect-node": "^2.0.4",
-    "grommet": "^2.16.2",
-    "grommet-icons": "^4.5.0",
+    "framer-motion": "^3.2.1",
     "next": "^10.0.5",
     "react": "^17.0.1",
     "react-dom": "17.0.1",
@@ -26,19 +29,17 @@
     "redux": "^4.0.5",
     "redux-camel": "^1.1.0",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^1.1.3",
-    "styled-components": "^5.2.1"
+    "redux-saga": "^1.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@chakra-ui/theme-tools": "^1.0.3",
     "@svgr/webpack": "^5.5.0",
     "@types/detect-node": "^2.0.0",
     "@types/node": "^14.14.21",
     "@types/react": "^17.0.0",
     "@types/react-redux": "^7.1.15",
     "@types/redux-logger": "^3.0.8",
-    "@types/styled-components": "^5.1.7",
-    "babel-plugin-styled-components": "^1.12.0",
     "husky": "4.3.8",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",

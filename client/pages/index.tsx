@@ -1,16 +1,10 @@
+import { Box, Container } from '@chakra-ui/react';
 import Header from '@components/organisms/Header';
 import List from '@components/organisms/List';
 import Search from '@components/organisms/Search';
 import { domainsSelector } from '@store/domains/slice';
-import { Box, Main } from 'grommet';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-
-const Container = styled(Main)`
-  margin: 0 auto;
-  max-width: 600px;
-`;
 
 export default function HomePage() {
   const hasResults = useSelector(domainsSelector.selectTotal) > 0;
@@ -21,8 +15,8 @@ export default function HomePage() {
         <title>Domane</title>
       </Head>
 
-      <Container alignContent="center">
-        <Box margin={{ vertical: 'medium' }}>
+      <Container maxW="xl" centerContent>
+        <Box width="100%" marginY={6}>
           <Header />
         </Box>
         <Search />

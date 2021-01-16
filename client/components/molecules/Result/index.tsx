@@ -1,4 +1,4 @@
-import { Anchor, Box } from 'grommet';
+import { Box, Link, Grid, GridItem } from '@chakra-ui/react';
 import { useMemo } from 'react';
 
 type ResultProps = {
@@ -10,11 +10,11 @@ export default function Result({ domain, isAvailable }: ResultProps) {
   const labelColor = useMemo(() => {
     switch (isAvailable) {
       case true:
-        return 'status-ok';
+        return 'green';
       case false:
-        return 'status-error';
+        return 'red';
       default:
-        return 'status-unknown';
+        return 'gray';
     }
   }, [isAvailable]);
 
@@ -30,26 +30,40 @@ export default function Result({ domain, isAvailable }: ResultProps) {
   }, [isAvailable]);
 
   return (
-    <Anchor
+    <Link
       href={`https://www.namecheap.com/cart/addtocart.aspx?producttype=domains&action=register&domainlist=${domain}`}
-      rel="nofollow"
-      target="_blank"
+      isExternal
+      _hover={{ textDecoration: 'none' }}
     >
       <Box
+        borderColor="gray.200"
+        borderWidth={1}
+        borderRadius="base"
         color="black"
-        direction="row"
-        elevation="small"
-        flex={true}
-        gap="small"
-        hoverIndicator={true}
-        justify="center"
-        pad={{ horizontal: 'medium', vertical: 'small' }}
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        paddingX={4}
+        paddingY={2}
+        shadow="md"
+        _hover={{ bg: 'gray.100' }}
       >
-        {domain}
-        <Box background={labelColor} pad={{ horizontal: 'xsmall', vertical: 'xxsmall' }} round="xsmall">
-          {labelText}
-        </Box>
+        <Grid templateColumns="1fr 3fr" gap={6} width="100%">
+          <GridItem display="flex" justifyContent="flex-end">
+            <Box
+              background={`${labelColor}.200`}
+              borderRadius="base"
+              display="inline-flex"
+              color={`${labelColor}.800`}
+              paddingX={2}
+              paddingY={1}
+            >
+              {labelText}
+            </Box>
+          </GridItem>
+          <GridItem>{domain}</GridItem>
+        </Grid>
       </Box>
-    </Anchor>
+    </Link>
   );
 }

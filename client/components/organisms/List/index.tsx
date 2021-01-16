@@ -1,7 +1,7 @@
 import Result from '@components/molecules/Result';
 import { availabilitiesSelector } from '@store/availabilities/slice';
 import { domainsSelector } from '@store/domains/slice';
-import { Box } from 'grommet';
+import { SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ export default function List() {
   const availabilities = useSelector(availabilitiesSelector.selectEntities);
 
   return (
-    <Box pad="medium">
+    <SimpleGrid width="100%" paddingY={6} columns={1} spacing={3}>
       {ids.map((id) => {
         if (!domains[id]) {
           return null;
@@ -25,6 +25,6 @@ export default function List() {
 
         return <Result domain={domain} isAvailable={availabilities[domain]?.isAvailable} key={id} />;
       })}
-    </Box>
+    </SimpleGrid>
   );
 }

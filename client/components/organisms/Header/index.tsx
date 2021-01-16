@@ -1,13 +1,12 @@
-import LogoSvg from '@assets/logo.svg';
+import { Box, Link } from '@chakra-ui/react';
+import Logo from '@components/atoms/Logo';
+import styled from '@emotion/styled';
 import { updateQuery } from '@store/query/slice';
-import { Anchor, Header as GrommetHeader } from 'grommet';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
-const Logo = styled(LogoSvg)`
-  fill: ${({ theme }) => theme.global.colors['brand']};
-  width: 8rem;
+const StyledLogo = styled(Logo)`
+  color: ${({ theme }: any) => theme.colors.brand[500]};
 `;
 
 export default function Header() {
@@ -15,11 +14,13 @@ export default function Header() {
   const handleClick = useCallback(() => dispatch(updateQuery('')), []);
 
   return (
-    <GrommetHeader>
-      <Anchor onClick={handleClick}>
-        <Logo />
-      </Anchor>
-      <Anchor color="dark-1" weight="normal" label="GitHub" href="https://github.com/kostaspt/domane" />
-    </GrommetHeader>
+    <Box display="flex" justifyContent="space-between">
+      <Link onClick={handleClick}>
+        <StyledLogo height="auto" width={32} />
+      </Link>
+      <Link color="black" href="https://github.com/kostaspt/domane">
+        GitHub
+      </Link>
+    </Box>
   );
 }

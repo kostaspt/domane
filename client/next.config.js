@@ -6,25 +6,6 @@ module.exports = (phase) => {
   return {
     publicRuntimeConfig: {
       API_URL: isProd ? 'https://domane.io/api' : 'http://localhost:4000',
-      THEME: {
-        global: {
-          colors: {
-            brand: '#047857',
-          },
-          font: {
-            family: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";`,
-          },
-        },
-      },
-    },
-
-    webpack(config) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      });
-
-      return config;
     },
   };
 };
