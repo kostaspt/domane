@@ -48,7 +48,7 @@ export default function Result({ domain, isAvailable }: ResultProps) {
         shadow="md"
         _hover={{ bg: 'gray.100' }}
       >
-        <Grid templateColumns="1fr 3fr" gap={6} width="100%">
+        <Grid templateColumns="3fr 1fr" gap={6} width="100%">
           <GridItem>{domain}</GridItem>
           <GridItem display="flex" justifyContent="flex-end">
             <Box
