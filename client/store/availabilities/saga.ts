@@ -1,3 +1,4 @@
+import { EntityId } from '@reduxjs/toolkit';
 import { domainsSelector, domainsSliceName } from '@store/domains/slice';
 import getConfig from 'next/config';
 import { eventChannel } from 'redux-saga';
@@ -9,7 +10,7 @@ import ReconnectingWebSocket from 'reconnecting-websocket';
 const { publicRuntimeConfig } = getConfig();
 const { API_URL } = publicRuntimeConfig;
 
-let ws;
+let ws: ReconnectingWebSocket;
 
 function createEventChannel() {
   return eventChannel((emit) => {
@@ -44,7 +45,7 @@ function* setupConnection() {
 function* sendMessages() {
   yield delay(500);
 
-  const ids = yield select(domainsSelector.selectIds);
+  const ids: EntityId[] = yield select(domainsSelector.selectIds);
   const domains = yield select(domainsSelector.selectEntities);
   const availabilities = yield select(availabilitiesSelector.selectEntities);
 
