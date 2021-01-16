@@ -49,6 +49,7 @@ export default function Result({ domain, isAvailable }: ResultProps) {
         _hover={{ bg: 'gray.100' }}
       >
         <Grid templateColumns="1fr 3fr" gap={6} width="100%">
+          <GridItem>{domain}</GridItem>
           <GridItem display="flex" justifyContent="flex-end">
             <Box
               background={`${labelColor}.200`}
@@ -61,7 +62,6 @@ export default function Result({ domain, isAvailable }: ResultProps) {
               {labelText}
             </Box>
           </GridItem>
-          <GridItem>{domain}</GridItem>
         </Grid>
       </Box>
     </Link>
