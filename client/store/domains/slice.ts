@@ -1,20 +1,22 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../index';
 
-const adapter = createEntityAdapter({
+const name: string = 'domains';
+
+type Domain = {
+  domain: string;
+  position: number;
+};
+
+const adapter = createEntityAdapter<Domain>({
   selectId: (entity) => `${entity.position}-${entity.domain}`,
 });
 
-const name = 'domains';
-
-const initialState = {
-  ids: [],
-  entities: {},
-  loading: false,
-};
-
 const slice = createSlice({
   name,
-  initialState,
+  initialState: adapter.getInitialState({
+    loading: false,
+  }),
   reducers: {
     fetchData(state) {
       state.loading = true;
@@ -26,7 +28,7 @@ const slice = createSlice({
   },
 });
 
-export const domainsSelector = adapter.getSelectors((state) => state[name]);
+export const domainsSelector = adapter.getSelectors((state: RootState) => state[name]);
 
 export const domainsSliceName = name;
 export const { fetchData: fetchDomains, fetchDataSuccess: fetchDomainsSuccess } = slice.actions;

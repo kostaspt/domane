@@ -2,24 +2,6 @@
   "presets": ["next/babel"],
   "plugins": [
     [
-      "module-resolver",
-      {
-        "root": ["."],
-        "alias": {
-          "@assets": "./assets",
-          "@components": "./components",
-          "@hooks": "./hooks",
-          "@store": "./store"
-        }
-      }
-    ],
-    [
-      "inline-react-svg",
-      {
-        "svgo": false
-      }
-    ],
-    [
       "styled-components",
       {
         "ssr": true

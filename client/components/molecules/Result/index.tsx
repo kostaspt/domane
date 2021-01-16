@@ -1,7 +1,12 @@
 import { Anchor, Box } from 'grommet';
 import { useMemo } from 'react';
 
-export default function Result({ domain, isAvailable }) {
+type ResultProps = {
+  domain: string;
+  isAvailable: boolean | undefined;
+};
+
+export default function Result({ domain, isAvailable }: ResultProps) {
   const labelColor = useMemo(() => {
     switch (isAvailable) {
       case true:
@@ -25,24 +30,26 @@ export default function Result({ domain, isAvailable }) {
   }, [isAvailable]);
 
   return (
-    <Box
-      as={Anchor}
-      color="black"
-      direction="row"
-      elevation="small"
-      flex={true}
-      gap="small"
-      hoverIndicator={true}
+    <Anchor
       href={`https://www.namecheap.com/cart/addtocart.aspx?producttype=domains&action=register&domainlist=${domain}`}
-      justify="center"
-      pad={{ horizontal: 'medium', vertical: 'small' }}
       rel="nofollow"
       target="_blank"
     >
-      {domain}
-      <Box background={labelColor} pad={{ horizontal: 'xsmall', vertical: 'xxsmall' }} round="xsmall">
-        {labelText}
+      <Box
+        color="black"
+        direction="row"
+        elevation="small"
+        flex={true}
+        gap="small"
+        hoverIndicator={true}
+        justify="center"
+        pad={{ horizontal: 'medium', vertical: 'small' }}
+      >
+        {domain}
+        <Box background={labelColor} pad={{ horizontal: 'xsmall', vertical: 'xxsmall' }} round="xsmall">
+          {labelText}
+        </Box>
       </Box>
-    </Box>
+    </Anchor>
   );
 }

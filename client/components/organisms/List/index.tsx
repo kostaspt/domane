@@ -12,9 +12,19 @@ export default function List() {
 
   return (
     <Box pad="medium">
-      {ids.map((id) => (
-        <Result domain={domains[id].domain} isAvailable={availabilities[domains[id].domain]?.isAvailable} key={id} />
-      ))}
+      {ids.map((id) => {
+        if (!domains[id]) {
+          return null;
+        }
+
+        const { domain } = domains[id] ?? {};
+
+        if (!domain) {
+          return null;
+        }
+
+        return <Result domain={domain} isAvailable={availabilities[domain]?.isAvailable} key={id} />;
+      })}
     </Box>
   );
 }
