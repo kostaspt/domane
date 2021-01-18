@@ -1,4 +1,4 @@
-import { Box, Link, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Link, Grid, GridItem, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { useMemo } from 'react';
 
 type ResultProps = {
@@ -7,6 +7,13 @@ type ResultProps = {
 };
 
 export default function Result({ domain, isAvailable }: ResultProps) {
+  const { colorMode } = useColorMode();
+
+  const bg = useColorModeValue('white', 'gray.700');
+  const bgHover = useColorModeValue('gray.100', 'gray.600');
+  const borderColor = useColorModeValue('gray.200', 'gray.900');
+  const color = useColorModeValue('gray.900', 'gray.200');
+
   const labelColor = useMemo(() => {
     switch (isAvailable) {
       case true:
@@ -36,20 +43,23 @@ export default function Result({ domain, isAvailable }: ResultProps) {
       _hover={{ textDecoration: 'none' }}
     >
       <Box
-        borderColor="gray.200"
+        background={bg}
+        borderColor={borderColor}
         borderWidth={1}
         borderRadius="base"
-        color="black"
+        color={color}
         display="flex"
         flexDirection="row"
         justifyContent="center"
         paddingX={4}
         paddingY={2}
-        shadow="md"
-        _hover={{ bg: 'gray.100' }}
+        shadow={colorMode ? 'md' : 'none'}
+        _hover={{ bg: bgHover }}
       >
         <Grid templateColumns="3fr 1fr" gap={6} width="100%">
-          <GridItem>{domain}</GridItem>
+          <GridItem display="flex" alignItems="center">
+            {domain}
+          </GridItem>
           <GridItem display="flex" justifyContent="flex-end">
             <Box
               background={`${labelColor}.200`}

@@ -1,4 +1,6 @@
-import { Box, Link } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { Box, Link, SimpleGrid, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import GitHubIcon from '@components/atoms/GitHubIcon';
 import Logo from '@components/atoms/Logo';
 import styled from '@emotion/styled';
 import { updateQuery } from '@store/query/slice';
@@ -10,6 +12,11 @@ const StyledLogo = styled(Logo)`
 `;
 
 export default function Header() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const linkColor = useColorModeValue('gray.900', 'gray.200');
+  const linkColorHover = useColorModeValue('gray.700', 'gray.400');
+
   const dispatch = useDispatch();
   const handleClick = useCallback(() => dispatch(updateQuery('')), []);
 
@@ -18,9 +25,18 @@ export default function Header() {
       <Link onClick={handleClick}>
         <StyledLogo height="auto" width={32} />
       </Link>
-      <Link color="black" href="https://github.com/kostaspt/domane">
-        GitHub
-      </Link>
+      <SimpleGrid columns={2} spacing={3}>
+        <Link color={linkColor} href="https://github.com/kostaspt/domane" target="_blank">
+          <GitHubIcon _hover={{ color: linkColorHover }} />
+        </Link>
+        <Link as="div" onClick={toggleColorMode}>
+          {colorMode === 'light' ? (
+            <SunIcon _hover={{ color: linkColorHover }} />
+          ) : (
+            <MoonIcon _hover={{ color: linkColorHover }} />
+          )}
+        </Link>
+      </SimpleGrid>
     </Box>
   );
 }
