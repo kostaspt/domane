@@ -19,6 +19,7 @@
     "strict": true,
     "target": "esnext",
     "paths": {
+      "@/*": ["./*"],
       "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
       "@store/*": ["./store/*"]
