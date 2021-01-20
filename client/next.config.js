@@ -1,7 +1,7 @@
 const { PHASE_PRODUCTION_BUILD } = require('next/constants');
 
 module.exports = (phase) => {
-  const isProd = phase === PHASE_PRODUCTION_BUILD;
+  const isProd = process.env.NODE_ENV === 'production' || phase === PHASE_PRODUCTION_BUILD;
 
   return {
     publicRuntimeConfig: {
