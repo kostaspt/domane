@@ -16,18 +16,6 @@ RUN yarn build
 # Remove dev dependencies
 RUN yarn install --production
 
-### Serve
-FROM node:15.5.1-alpine
-
-WORKDIR /usr/src/app
-
-ENV NODE_ENV production
-
-COPY --from=builder /usr/src/app/package.json ./package.json
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/.next ./.next
-COPY --from=builder /usr/src/app/public ./public
-
 EXPOSE $CLIENT_PORT
 
 CMD ["sh" , "-c", "yarn start -p ${CLIENT_PORT}"]
