@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../index';
+import { RootState } from '@/store';
 
 const name: string = 'domains';
 
