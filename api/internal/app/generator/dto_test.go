@@ -10,10 +10,10 @@ import (
 func TestResultsSort(t *testing.T) {
 	rs := make(Results, 2)
 	rs = Results{
-		{Domain: "foo.xyz", Kind: CommonExtension},
-		{Domain: "foo.com", Kind: DotComExtension},
-		{Domain: "foo.io", Kind: CommonExtension},
-		{Domain: "f.io", Kind: CommonExtension},
+		{Domain: "foo.xyz", Kind: ExtensionCommon},
+		{Domain: "foo.com", Kind: ExtensionDotCom},
+		{Domain: "foo.io", Kind: ExtensionCommon},
+		{Domain: "f.io", Kind: ExtensionCommon},
 	}
 
 	sort.Sort(rs)

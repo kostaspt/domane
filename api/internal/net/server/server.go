@@ -37,6 +37,7 @@ func Start() error {
 	http := HTTPHandler.New()
 	e.GET("/", http.RootIndex)
 	e.POST("/domains/extensions", http.DomainsExtensions)
+	e.POST("/domains/similars", http.DomainsSimilars)
 
 	// WebSockets
 	ws := WSHandler.New()

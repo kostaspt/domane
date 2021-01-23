@@ -3,10 +3,11 @@ package generator
 type Kind string
 
 const (
-	DotComExtension           Kind = "dot_com_extension"
-	CommonExtension           Kind = "common_extension"
-	CommonExtensionHyphenated Kind = "common_extension_hyphenated"
-	ShortExtension            Kind = "short_extensions"
+	ExtensionDotCom           Kind = "extension_dot_com"
+	ExtensionCommon           Kind = "extension_common"
+	ExtensionCommonHyphenated Kind = "extension_common_hyphenated"
+	ExtensionShort            Kind = "extensions_short"
+	SimilarSynonym            Kind = "similar_synonym"
 )
 
 type Result struct {
@@ -19,6 +20,6 @@ type Results []Result
 
 func (r Results) Len() int { return len(r) }
 func (r Results) Less(i, j int) bool {
-	return r[j].Kind != DotComExtension && (r[i].Kind == DotComExtension || len(r[i].Domain) < len(r[j].Domain))
+	return r[j].Kind != ExtensionDotCom && (r[i].Kind == ExtensionDotCom || len(r[i].Domain) < len(r[j].Domain))
 }
 func (r Results) Swap(i, j int) { r[i], r[j] = r[j], r[i] }

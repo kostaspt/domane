@@ -3,21 +3,26 @@ package http
 import (
 	"net/http"
 	"regexp"
-	"sort"
 
+	"github.com/asaskevich/govalidator"
 	"github.com/labstack/echo/v4"
 
 	"github.com/kostaspt/domane/api/internal/app/generator"
 )
 
 type SearchRequest struct {
-	Query string `json:"query"`
+	Query string `json:"query" valid:"required,minstringlength(1)"`
 }
 
 func (Handler) DomainsExtensions(ctx echo.Context) error {
 	req := SearchRequest{}
 	if err := ctx.Bind(&req); err != nil {
 		return err
+	}
+
+	_, err := govalidator.ValidateStruct(req)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, err)
 	}
 
 	results := make(generator.Results, 0, len(generator.TopExtensions()))
@@ -39,13 +44,25 @@ func (Handler) DomainsExtensions(ctx echo.Context) error {
 		results = append(results, r)
 	}
 
-	// Sort results according to the custom sorter
-	sort.Sort(results)
+	sortResults(results)
 
-	// Add position to make sure it will be kept at the front-end
-	for i := range results {
-		results[i].Position = uint(i + 1)
+	return ctx.JSON(http.StatusOK, results)
+}
+
+func (Handler) DomainsSimilars(ctx echo.Context) error {
+	req := SearchRequest{}
+	if err := ctx.Bind(&req); err != nil {
+		return err
 	}
+
+	_, err := govalidator.ValidateStruct(req)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, err)
+	}
+
+	results := generator.Synonyms(req.Query)
+
+	sortResults(results)
 
 	return ctx.JSON(http.StatusOK, results)
 }

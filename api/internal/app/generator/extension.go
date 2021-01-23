@@ -2,22 +2,24 @@ package generator
 
 import (
 	"regexp"
+
+	"github.com/kostaspt/domane/api/pkg/parser"
 )
 
 func CommonExtensions(text string) Results {
 	extensions := TopExtensions()
 
-	text = Clean(text)
+	text = parser.Clean(text)
 
 	results := make(Results, len(extensions))
 	for i, e := range extensions {
 		results[i] = Result{
 			Domain: text + "." + e,
-			Kind:   CommonExtension,
+			Kind:   ExtensionCommon,
 		}
 
 		if e == "com" {
-			results[i].Kind = DotComExtension
+			results[i].Kind = ExtensionDotCom
 		}
 	}
 
@@ -27,17 +29,17 @@ func CommonExtensions(text string) Results {
 func CommonExtensionsHyphenated(text string) Results {
 	extensions := TopExtensions()
 
-	text = Hyphenate(text)
+	text = parser.Hyphenate(text)
 
 	results := make(Results, len(extensions))
 	for i, e := range extensions {
 		results[i] = Result{
 			Domain: text + "." + e,
-			Kind:   CommonExtensionHyphenated,
+			Kind:   ExtensionCommonHyphenated,
 		}
 
 		if e == "com" {
-			results[i].Kind = DotComExtension
+			results[i].Kind = ExtensionDotCom
 		}
 	}
 
@@ -47,7 +49,7 @@ func CommonExtensionsHyphenated(text string) Results {
 func ShortExtensions(text string) Results {
 	extensions := AllExtensions()
 
-	text = Clean(text)
+	text = parser.Clean(text)
 
 	results := make(Results, 0, len(extensions))
 	for _, e := range extensions {
@@ -59,11 +61,11 @@ func ShortExtensions(text string) Results {
 
 		r := Result{
 			Domain: re.ReplaceAllString(text, `$1.`+e),
-			Kind:   ShortExtension,
+			Kind:   ExtensionShort,
 		}
 
 		if e == "com" {
-			r.Kind = DotComExtension
+			r.Kind = ExtensionDotCom
 		}
 
 		results = append(results, r)

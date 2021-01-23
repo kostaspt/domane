@@ -12,10 +12,10 @@ func TestCommonExtensions(t *testing.T) {
 	assert.Equal(t, len(TopExtensions()), len(results))
 
 	assert.Equal(t, "foobar.com", results[0].Domain)
-	assert.Equal(t, DotComExtension, results[0].Kind)
+	assert.Equal(t, ExtensionDotCom, results[0].Kind)
 
 	assert.Equal(t, "foobar.xyz", results[1].Domain)
-	assert.Equal(t, CommonExtension, results[1].Kind)
+	assert.Equal(t, ExtensionCommon, results[1].Kind)
 }
 
 func TestCommonExtensionsHyphenated(t *testing.T) {
@@ -24,10 +24,10 @@ func TestCommonExtensionsHyphenated(t *testing.T) {
 	assert.Equal(t, len(TopExtensions()), len(results))
 
 	assert.Equal(t, "foo-bar.com", results[0].Domain)
-	assert.Equal(t, DotComExtension, results[0].Kind)
+	assert.Equal(t, ExtensionDotCom, results[0].Kind)
 
 	assert.Equal(t, "foo-bar.xyz", results[1].Domain)
-	assert.Equal(t, CommonExtensionHyphenated, results[1].Kind)
+	assert.Equal(t, ExtensionCommonHyphenated, results[1].Kind)
 }
 
 func TestShortExtensions(t *testing.T) {
@@ -35,7 +35,7 @@ func TestShortExtensions(t *testing.T) {
 	assert.GreaterOrEqual(t, len(results), 1)
 
 	for _, r := range results {
-		if r.Domain == "foo.bar" && r.Kind == ShortExtension {
+		if r.Domain == "foo.bar" && r.Kind == ExtensionShort {
 			return
 		}
 	}
