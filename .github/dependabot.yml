@@ -6,6 +6,7 @@ updates:
     directory: "/api"
     schedule:
       interval: "weekly"
+      day: "saturday"
   - package-ecosystem: "docker"
     directory: "/api"
     schedule:
@@ -17,6 +18,7 @@ updates:
     directory: "/client"
     schedule:
       interval: "weekly"
+      day: "saturday"
   - package-ecosystem: "docker"
     directory: "/client"
     schedule:
