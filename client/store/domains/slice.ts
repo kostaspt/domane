@@ -1,35 +1,42 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
+import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
+import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@store/status';
 
-const name: string = 'domains';
+export const name: string = 'domains';
 
-type Domain = {
+export type Domain = {
   domain: string;
+  kind: string;
   position: number;
 };
 
+type State = EntityState<Domain> & {
+  status: string;
+};
+
+export const domainIdSelector = (entity: Domain) => `${entity.position}-${entity.domain}`;
+
 const adapter = createEntityAdapter<Domain>({
-  selectId: (entity) => `${entity.position}-${entity.domain}`,
+  selectId: domainIdSelector,
 });
 
 const slice = createSlice({
   name,
   initialState: adapter.getInitialState({
-    loading: false,
-  }),
+    status: STATUS_IDLE,
+  }) as State,
   reducers: {
     fetchData(state) {
-      state.loading = true;
+      state.status = STATUS_LOADING;
     },
     fetchDataSuccess(state, { payload }) {
-      state.loading = false;
-      adapter.setAll(state, payload);
+      state.status = STATUS_SUCCESS;
+      adapter.addMany(state, payload);
     },
   },
 });
 
-export const domainsSelector = adapter.getSelectors((state: RootState) => state[name]);
+export const selectors = adapter.getSelectors((state: RootState) => state[name]);
 
-export const domainsSliceName = name;
-export const { fetchData: fetchDomains, fetchDataSuccess: fetchDomainsSuccess } = slice.actions;
+export const { fetchDataSuccess } = slice.actions;
 export default slice.reducer;

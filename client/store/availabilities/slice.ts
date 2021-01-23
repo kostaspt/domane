@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
 
-const name: string = 'availabilities';
+export const name: string = 'availabilities';
 
 type Availability = {
   domain: string;
@@ -22,8 +22,7 @@ const slice = createSlice({
   },
 });
 
-export const availabilitiesSelector = adapter.getSelectors((state: RootState) => state[name]);
+export const selectors = adapter.getSelectors((state: RootState) => state[name]);
 
-export const availabilitiesSliceName = name;
-export const { upsert: upsertAvailability } = slice.actions;
+export const { upsert } = slice.actions;
 export default slice.reducer;

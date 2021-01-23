@@ -1,5 +1,5 @@
 import theme from '@/theme';
-import { ChakraProvider, Container, cookieStorageManager, localStorageManager } from '@chakra-ui/react';
+import { ChakraProvider, cookieStorageManager, localStorageManager } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
 
@@ -13,7 +13,7 @@ export default function Wrapper({ cookies, children }: WrapperProps) {
 
   return (
     <ChakraProvider resetCSS theme={theme} colorModeManager={colorModeManager}>
-      <Container>{children}</Container>
+      {children}
     </ChakraProvider>
   );
 }
