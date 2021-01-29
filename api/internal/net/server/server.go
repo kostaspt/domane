@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	elog "github.com/labstack/gommon/log"
@@ -32,6 +33,10 @@ func Start() error {
 		lecho.WithCaller(),
 	)
 	e.HideBanner = true
+
+	// Prometheus
+	p := prometheus.NewPrometheus("echo", nil)
+	p.Use(e)
 
 	// HTTP
 	http := HTTPHandler.New()

@@ -1,12 +1,16 @@
 version: "3.8"
 
+networks:
+  internal:
+
+volumes:
+  grafana_data:
+  prometheus_data:
+
 services:
   proxy:
     image: haproxy:2.3-alpine
     restart: unless-stopped
-    links:
-      - api
-      - client
     ports:
       - 80:80
     volumes:
@@ -15,16 +19,44 @@ services:
       - DOMAIN=${DOMAIN}
       - CLIENT_PORT=${CLIENT_PORT}
       - API_PORT=${API_PORT}
+    networks:
+      - internal
 
   client:
     image: ghcr.io/kostaspt/domane-client:latest
+    build: ./client
     restart: unless-stopped
     environment:
       - NODE_ENV=production
       - CLIENT_PORT=${CLIENT_PORT}
+    networks:
+      - internal
 
   api:
     image: ghcr.io/kostaspt/domane-api:latest
+    build: ./api
     restart: unless-stopped
     environment:
       - API_PORT=${API_PORT}
+    networks:
+      - internal
+
+  prometheus:
+    image: prom/prometheus:v2.24.0
+    restart: unless-stopped
+    volumes:
+      - prometheus_data:/prometheus
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - internal
+
+  grafana:
+    image: grafana/grafana:7.3.6
+    restart: unless-stopped
+    links:
+      - prometheus
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/custom.ini:/etc/grafana/grafana.ini
+    networks:
+      - internal
