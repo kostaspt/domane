@@ -3,7 +3,7 @@ package generator
 import (
 	"testing"
 
-	"github.com/kostaspt/go-datamuse"
+	"github.com/kostaspt/go-datamuse/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/thoas/go-funk"
 )

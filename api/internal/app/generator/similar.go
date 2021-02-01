@@ -1,7 +1,7 @@
 package generator
 
 import (
-	"github.com/kostaspt/go-datamuse"
+	"github.com/kostaspt/go-datamuse/v2"
 	"github.com/rs/zerolog/log"
 	"github.com/thoas/go-funk"
 
