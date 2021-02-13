@@ -16,7 +16,7 @@
     "@chakra-ui/react": "^1.2.1",
     "@chakra-ui/system": "^1.2.1",
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/styled": "^11.1.5",
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
     "detect-node": "^2.0.4",
