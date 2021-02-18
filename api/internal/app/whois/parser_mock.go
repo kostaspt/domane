@@ -6,7 +6,7 @@ import (
 	whoisparser "github.com/likexian/whois-parser-go"
 )
 
-type MockParser struct {}
+type MockParser struct{}
 
 func NewMockParser() MockParser {
 	return MockParser{}
@@ -25,4 +25,3 @@ func (MockParser) ExpirationDate(domain string) (t time.Time, err error) {
 	}
 	return
 }
-

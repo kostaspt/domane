@@ -26,7 +26,7 @@ func TestSynonyms(t *testing.T) {
 	assert.Equal(t, (len(sHelloSyn)+1)*(len(sWorldSyn)+1)-1, len(synonyms))
 
 	// First result should be the hello + a synonym of world
-	assert.Equal(t, "hello" + sWorld[0].Word + ".com", synonyms[0].Domain)
+	assert.Equal(t, "hello"+sWorld[0].Word+".com", synonyms[0].Domain)
 }
 
 func TestGetPermutations(t *testing.T) {

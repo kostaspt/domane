@@ -11,7 +11,7 @@ import (
 
 func (Handler) RootIndex(ctx echo.Context) error {
 	resp := map[string]interface{}{
-		"message": fmt.Sprintf("Domane API %s", viper.GetString("VERSION")),
+		"message":  fmt.Sprintf("Domane API %s", viper.GetString("VERSION")),
 		"datetime": time.Now(),
 	}
 
