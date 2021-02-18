@@ -75,10 +75,10 @@ func ShortExtensions(text string) Results {
 }
 
 func AllExtensions() []string {
-	allExtensions := allExtensions()
+	extensions := allExtensions()
 
-	es := make([]string, 0, len(allExtensions))
-	for _, tx := range allExtensions {
+	es := make([]string, 0, len(extensions))
+	for _, tx := range extensions {
 		es = append(es, tx)
 	}
 
