@@ -16,7 +16,7 @@ func NewWhois(parser Parser) Whois {
 	}
 }
 
-func (w *Whois) IsAvailable(domain string) (bool, error) {
+func (w Whois) IsAvailable(domain string) (bool, error) {
 	t, err := w.parser.ExpirationDate(domain)
 	if err == whoisparser.ErrDomainNotFound {
 		return true, nil
