@@ -5,22 +5,18 @@ updates:
   - package-ecosystem: "gomod"
     directory: "/api"
     schedule:
-      interval: "weekly"
-      day: "saturday"
+      interval: "monthly"
   - package-ecosystem: "docker"
     directory: "/api"
     schedule:
-      interval: "weekly"
-      day: "saturday"
+      interval: "monthly"
 
   # Client
   - package-ecosystem: "npm"
     directory: "/client"
     schedule:
-      interval: "weekly"
-      day: "saturday"
+      interval: "monthly"
   - package-ecosystem: "docker"
     directory: "/client"
     schedule:
-      interval: "weekly"
-      day: "saturday"
+      interval: "monthly"
