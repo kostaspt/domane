@@ -19,10 +19,10 @@
     "strict": true,
     "target": "esnext",
     "paths": {
-      "@/*": ["./*"],
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@store/*": ["./store/*"]
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@store/*": ["./src/store/*"]
     }
   },
   "exclude": [".next", "node_modules"],

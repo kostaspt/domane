@@ -1,8 +1,8 @@
-import { fetchDataSuccess as fetchDomainsSuccess } from '@store/domains/slice';
-import { name as querySliceName } from '@store/query/slice';
+import { fetchDataSuccess as domainFetchDataSuccess } from '@/store/domains/slice';
+import { name as querySliceName } from '@/store/query/slice';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { apiRequest } from './api';
-import { name, fetchDataSuccess } from './slice';
+import { fetchDataSuccess, name } from './slice';
 
 function* loadData() {
   const query: string = yield select((s) => s[querySliceName].text ?? '');
@@ -14,7 +14,7 @@ function* loadData() {
 
   const { data } = yield call(apiRequest, query);
   yield put(fetchDataSuccess(data));
-  yield put(fetchDomainsSuccess(data));
+  yield put(domainFetchDataSuccess(data));
 }
 
 export default function* rootSaga() {

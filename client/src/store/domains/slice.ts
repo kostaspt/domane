@@ -1,6 +1,6 @@
 import { RootState } from '@/store';
 import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
-import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@store/status';
+import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@/store/status';
 
 export const name: string = 'domains';
 
