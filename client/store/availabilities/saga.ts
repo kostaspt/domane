@@ -1,11 +1,11 @@
-import { EntityId } from '@reduxjs/toolkit';
-import { selectors as domainsSelectors, name as domainsSliceName } from '@store/domains/slice';
-import getConfig from 'next/config';
-import { eventChannel } from 'redux-saga';
-import { call, delay, fork, put, select, take, takeLatest } from 'redux-saga/effects';
-import { selectors, upsert } from './slice';
+import { Dictionary, EntityId } from '@reduxjs/toolkit';
+import { Domain, name as domainsSliceName, selectors as domainsSelectors } from '@store/domains/slice';
 import isNode from 'detect-node';
+import getConfig from 'next/config';
 import ReconnectingWebSocket from 'reconnecting-websocket';
+import { EventChannel, eventChannel } from 'redux-saga';
+import { call, delay, fork, put, select, take, takeLatest } from 'redux-saga/effects';
+import { Availability, selectors, upsert } from './slice';
 
 const { publicRuntimeConfig } = getConfig();
 const { API_URL } = publicRuntimeConfig;
@@ -35,7 +35,7 @@ function* setupConnection() {
   const wsURL = API_URL.replace('http', 'ws');
   ws = new ReconnectingWebSocket(`${wsURL}/ws/availabilities`);
 
-  const channel = yield call(createEventChannel);
+  const channel: EventChannel<any> = yield call(createEventChannel);
   while (true) {
     const { data } = yield take(channel);
     yield put(upsert(data));
@@ -46,12 +46,12 @@ function* sendMessages() {
   yield delay(500);
 
   const ids: EntityId[] = yield select(domainsSelectors.selectIds);
-  const domains = yield select(domainsSelectors.selectEntities);
-  const availabilities = yield select(selectors.selectEntities);
+  const domains: Dictionary<Domain> = yield select(domainsSelectors.selectEntities);
+  const availabilities: Dictionary<Availability> = yield select(selectors.selectEntities);
 
   ids
-    .filter((id) => typeof availabilities[domains[id].domain]?.isAvailable === 'undefined')
-    .forEach((id) => ws.send(domains[id].domain));
+    .filter((id) => typeof availabilities[domains[id]?.domain ?? '']?.isAvailable === 'undefined')
+    .forEach((id) => ws.send(domains[id]?.domain ?? ''));
 }
 
 export default function* rootSaga() {

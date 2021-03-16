@@ -5,7 +5,7 @@ import { apiRequest } from './api';
 import { fetchDataSuccess, name } from './slice';
 
 function* loadData() {
-  const query = yield select((s) => s[querySliceName].text ?? '');
+  const query: string = yield select((s) => s[querySliceName].text ?? '');
 
   if (query.length === 0) {
     yield put(fetchDataSuccess([]));

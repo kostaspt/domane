@@ -3,7 +3,7 @@ import { RootState } from '@/store';
 
 export const name: string = 'availabilities';
 
-type Availability = {
+export type Availability = {
   domain: string;
   isAvailable: boolean;
 };
