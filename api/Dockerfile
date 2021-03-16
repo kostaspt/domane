@@ -1,5 +1,5 @@
 ### Build
-FROM golang:1.16.0-alpine as build
+FROM golang:1.16.2-alpine as build
 
 LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
