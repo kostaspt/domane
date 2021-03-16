@@ -3,8 +3,8 @@ package whois
 import (
 	"time"
 
-	"github.com/likexian/whois-go"
-	"github.com/likexian/whois-parser-go"
+	"github.com/likexian/whois"
+	"github.com/likexian/whois-parser"
 )
 
 type Parser interface {

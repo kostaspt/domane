@@ -3,7 +3,7 @@ package whois
 import (
 	"time"
 
-	whoisparser "github.com/likexian/whois-parser-go"
+	whoisparser "github.com/likexian/whois-parser"
 )
 
 type Whois struct {
