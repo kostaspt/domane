@@ -15,7 +15,7 @@ require (
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
-	github.com/thoas/go-funk v0.7.0
+	github.com/thoas/go-funk v0.8.0
 	github.com/tidwall/gjson v1.6.8
 	github.com/ziflex/lecho/v2 v2.1.0
 )
