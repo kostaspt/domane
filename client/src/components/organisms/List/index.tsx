@@ -3,7 +3,6 @@ import Result from '@components/molecules/Result';
 import { EntityId } from '@reduxjs/toolkit';
 import { selectors as availabilitiesSelectors } from '@store/availabilities/slice';
 import { selectors as domainsSelectors } from '@store/domains/slice';
-import React from 'react';
 import { useSelector } from 'react-redux';
 
 type Props = {

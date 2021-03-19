@@ -30,7 +30,7 @@ export default function Result({ domain, isAvailable }: ResultProps) {
       case true:
         return 'Available';
       case false:
-        return 'Unavailable';
+        return 'Taken';
       default:
         return 'Unknown';
     }
@@ -57,7 +57,7 @@ export default function Result({ domain, isAvailable }: ResultProps) {
         _hover={{ bg: bgHover }}
       >
         <Grid templateColumns="3fr 1fr" gap={6} width="100%">
-          <GridItem display="flex" alignItems="center">
+          <GridItem display="flex" alignItems="center" data-testid="domain-name">
             {domain}
           </GridItem>
           <GridItem display="flex" justifyContent="flex-end">
@@ -68,6 +68,7 @@ export default function Result({ domain, isAvailable }: ResultProps) {
               color={`${labelColor}.800`}
               paddingX={2}
               paddingY={1}
+              data-testid="domain-availability"
             >
               {labelText}
             </Box>
