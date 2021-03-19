@@ -1,6 +1,6 @@
 import { Search2Icon } from '@chakra-ui/icons';
 import { Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react';
-import { selectQueryText, updateQuery } from '@/store/query/slice';
+import { selectQueryText, updateQuery } from '@store/query/slice';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

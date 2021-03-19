@@ -1,5 +1,5 @@
-import { fetchDataSuccess as fetchDomainsSuccess } from '@/store/domains/slice';
-import { name as querySliceName } from '@/store/query/slice';
+import { fetchDataSuccess as fetchDomainsSuccess } from '@store/domains/slice';
+import { name as querySliceName } from '@store/query/slice';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { apiRequest } from './api';
 import { name, fetchDataSuccess } from './slice';

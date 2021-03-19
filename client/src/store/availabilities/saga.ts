@@ -1,5 +1,5 @@
 import { Dictionary, EntityId } from '@reduxjs/toolkit';
-import { Domain, name as domainsSliceName, selectors as domainsSelectors } from '@/store/domains/slice';
+import { Domain, name as domainsSliceName, selectors as domainsSelectors } from '@store/domains/slice';
 import isNode from 'detect-node';
 import getConfig from 'next/config';
 import ReconnectingWebSocket from 'reconnecting-websocket';

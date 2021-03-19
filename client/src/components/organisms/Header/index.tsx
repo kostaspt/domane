@@ -1,9 +1,9 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Box, Link, SimpleGrid, useColorMode, useColorModeValue } from '@chakra-ui/react';
-import GitHubIcon from '@/components/atoms/GitHubIcon';
-import Logo from '@/components/atoms/Logo';
+import GitHubIcon from '@components/atoms/GitHubIcon';
+import Logo from '@components/atoms/Logo';
 import styled from '@emotion/styled';
-import { updateQuery } from '@/store/query/slice';
+import { updateQuery } from '@store/query/slice';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 

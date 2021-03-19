@@ -1,7 +1,7 @@
-import { RootState } from '@/store';
+import { RootState } from '@store';
 import { createSelector, createSlice, EntityId } from '@reduxjs/toolkit';
-import { domainIdSelector } from '@/store/domains/slice';
-import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@/store/status';
+import { domainIdSelector } from '@store/domains/slice';
+import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@store/status';
 
 export const name: string = 'domainsExtensions';
 
