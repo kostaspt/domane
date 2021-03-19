@@ -6,21 +6,21 @@ it('should display a list of results', async () => {
   render(<Results />, {
     initialState: {
       availabilities: {
-        ids: ["test.com", "test.net", "try.com"],
+        ids: ['test.com', 'test.net', 'try.com'],
         entities: {
-          "test.com": {
-            domain: "test.com",
+          'test.com': {
+            domain: 'test.com',
             isAvailable: true,
           },
-          "test.net": {
-            domain: "test.net",
+          'test.net': {
+            domain: 'test.net',
             isAvailable: null,
           },
-          "try.com": {
-            domain: "try.com",
+          'try.com': {
+            domain: 'try.com',
             isAvailable: false,
-          }
-        }
+          },
+        },
       },
       domainsExtensions: {
         ids: ['0-test.com', '1-test.net'],
