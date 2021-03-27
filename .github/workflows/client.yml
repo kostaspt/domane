@@ -52,7 +52,7 @@ jobs:
         run: yarn build
 
       - name: Run tests
-        run: yarn test
+        run: yarn test:coverage
 
   deploy:
     name: Deploy

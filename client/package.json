@@ -5,7 +5,8 @@
     "dev": "next dev",
     "format": "prettier --write \"{,!(.next|out)/**/}*.{js,jsx,ts,tsx}\"",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --collect-coverage"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.6",
