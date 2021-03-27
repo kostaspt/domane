@@ -14,25 +14,14 @@ export default function Result({ domain, isAvailable }: ResultProps) {
   const borderColor = useColorModeValue('gray.200', 'gray.900');
   const color = useColorModeValue('gray.900', 'gray.200');
 
-  const labelColor = useMemo(() => {
+  const [labelColor, labelText] = useMemo(() => {
     switch (isAvailable) {
       case true:
-        return 'green';
+        return ['green', 'Available'];
       case false:
-        return 'red';
+        return ['red', 'Taken'];
       default:
-        return 'gray';
-    }
-  }, [isAvailable]);
-
-  const labelText = useMemo(() => {
-    switch (isAvailable) {
-      case true:
-        return 'Available';
-      case false:
-        return 'Taken';
-      default:
-        return 'Unknown';
+        return ['gray', 'Unknown'];
     }
   }, [isAvailable]);
 
