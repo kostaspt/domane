@@ -7,5 +7,13 @@ module.exports = (phase) => {
     publicRuntimeConfig: {
       API_URL: isProd ? 'https://domane.io/api' : 'http://localhost:4000',
     },
+    webpack(config) {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      });
+
+      return config;
+    },
   };
 };

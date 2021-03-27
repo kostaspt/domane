@@ -13,7 +13,7 @@ export default function Search() {
   return (
     <Stack width="100%" spacing={4}>
       <InputGroup>
-        <InputLeftElement pointerEvents="none" children={<Search2Icon color="brand.500" />} />
+        <InputLeftElement pointerEvents="none" children={<Search2Icon color="brand" />} />
         <Input
           borderColor="gray.500"
           borderRadius="full"

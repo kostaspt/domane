@@ -8,7 +8,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 const StyledLogo = styled(Logo)`
-  color: ${({ theme }: any) => theme.colors.brand[500]};
+  color: ${({ theme }: any) => theme.colors.brand};
 `;
 
 export default function Header() {

@@ -5,9 +5,7 @@ const config = {
   useSystemColorMode: false,
 
   colors: {
-    brand: {
-      500: '#047857',
-    },
+    brand: '#10b981',
   },
   fonts: {
     body: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
