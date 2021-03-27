@@ -3,12 +3,14 @@ import Wrapper from '@components/molecules/Wrapper';
 import Header from '@components/organisms/Header';
 import Results from '@components/organisms/Results';
 import Search from '@components/organisms/Search';
-import { selectors } from '@store/domains/slice';
+import { selectors as domainSelectors } from '@store/domains/slice';
+import { selectQueryText } from '@store/query/slice';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
 
 export default function HomePage({ cookies }: any) {
-  const hasResults = useSelector(selectors.selectTotal) > 0;
+  const query: string = useSelector(selectQueryText);
+  const hasResults: boolean = useSelector(domainSelectors.selectTotal) > 0;
 
   return (
     <Wrapper cookies={cookies}>
@@ -23,7 +25,7 @@ export default function HomePage({ cookies }: any) {
           </Box>
           <Search />
         </Container>
-        {hasResults && <Results />}
+        {query?.length > 0 && hasResults && <Results />}
       </Container>
     </Wrapper>
   );

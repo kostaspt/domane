@@ -11,7 +11,7 @@ export default function Results() {
   const similarsIds = useSelector(domainsSimilarsSelectIds);
 
   return (
-    <SimpleGrid width="100%" columns={{ sm: 1, md: 2 }} spacing={6} paddingTop={6}>
+    <SimpleGrid width="100%" columns={{ sm: 1, md: 2 }} spacing={6} marginY={16}>
       <ListColumn>
         <ListHeader>Extension</ListHeader>
         <List ids={extensionsIds} />

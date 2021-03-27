@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@store';
+import { RootState } from "@store";
 
 export const name: string = 'query';
 
-export type QueryInitialState = {
+export type State = {
   text: string;
 };
 
-const initialState: QueryInitialState = {
+const initialState: State = {
   text: '',
 };
 
@@ -21,7 +21,7 @@ const slice = createSlice({
   },
 });
 
-export const selectQueryText = (s: RootState) => s.text;
+export const selectQueryText = (s: RootState) => (<State>s[name]).text;
 
 export const { update: updateQuery } = slice.actions;
 export default slice.reducer;

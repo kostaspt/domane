@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Search() {
-  const query = useSelector(selectQueryText);
+  const query: string = useSelector(selectQueryText);
 
   const dispatch = useDispatch();
   const handleQueryChanged = useCallback((e) => dispatch(updateQuery(e.target.value)), []);

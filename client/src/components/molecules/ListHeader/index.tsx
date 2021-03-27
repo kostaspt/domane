@@ -6,5 +6,15 @@ type Props = {
 };
 
 export default function ListHeader({ children }: Props) {
-  return <Heading as="h3" size="lg" textAlign="center" isTruncated children={children} data-testid="list-header" />;
+  return (
+    <Heading
+      as="h3"
+      size="md"
+      textAlign="center"
+      isTruncated
+      children={children}
+      data-testid="list-header"
+      marginBottom={6}
+    />
+  );
 }
