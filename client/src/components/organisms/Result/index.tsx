@@ -13,7 +13,7 @@ const dummyAvailability = {
 };
 
 type ResultProps = {
-  id: string;
+  id: string | number;
 };
 
 export default function Result({ id }: ResultProps) {
