@@ -34,7 +34,7 @@ export default function DomainModal({ domain, isOpen, handleClose }: DomainModal
           </Heading>
           <SimpleGrid columns={3} spacing={4}>
             {['namecheap', 'godaddy', 'dynadot'].map((name) => (
-              <Registrar name={name} domain={domain} />
+              <Registrar name={name} domain={domain} key={name} />
             ))}
           </SimpleGrid>
         </ModalBody>
