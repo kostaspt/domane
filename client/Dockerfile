@@ -5,6 +5,9 @@ LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
 WORKDIR /usr/src/app
 
+ARG DOMAIN
+RUN test -n "$DOMAIN"
+
 # Install dependencies
 COPY package.json yarn.lock ./
 RUN (yarn check --integrity && yarn check --verify-tree) || yarn install --frozen-lockfile --network-timeout 1000000

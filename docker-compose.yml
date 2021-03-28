@@ -19,15 +19,19 @@ services:
       - DOMAIN=${DOMAIN}
       - CLIENT_PORT=${CLIENT_PORT}
       - API_PORT=${API_PORT}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-password}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     networks:
       - internal
 
   client:
     image: ghcr.io/kostaspt/domane-client:latest
-    build: ./client
+    build: 
+      context: ./client
+      args:
+        - DOMAIN=${DOMAIN}
     restart: unless-stopped
     environment:
+      - DOMAIN=${DOMAIN}
       - NODE_ENV=production
       - CLIENT_PORT=${CLIENT_PORT}
     networks:
@@ -38,6 +42,7 @@ services:
     build: ./api
     restart: unless-stopped
     environment:
+      - DOMAIN=${DOMAIN}
       - API_PORT=${API_PORT}
     networks:
       - internal

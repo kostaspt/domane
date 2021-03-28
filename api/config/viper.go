@@ -19,4 +19,5 @@ func initViper() {
 	viper.AutomaticEnv()
 
 	viper.SetDefault("VERSION", "v1.0")
+	viper.SetDefault("DOMAIN", "domane.io")
 }

@@ -23,7 +23,8 @@ func Start() error {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{
 			"http://localhost:3000",
-			"https://domane.io",
+			"http://" + viper.GetString("DOMAIN"),
+			"https://" + viper.GetString("DOMAIN"),
 		},
 	}))
 	e.Logger = lecho.New(
