@@ -17,7 +17,7 @@ COPY . .
 RUN make build
 
 ### Serve
-FROM alpine:3.13.2
+FROM alpine:3.13.3
 WORKDIR /app
 
 COPY --from=build /go/src/app/bin/domane /app
