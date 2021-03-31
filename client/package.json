@@ -33,7 +33,7 @@
     "@babel/core": "^7.13.10",
     "@chakra-ui/theme-tools": "^1.1.0",
     "@svgr/webpack": "^5.5.0",
-    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
     "@types/detect-node": "^2.0.0",
     "@types/jest": "^26.0.21",
