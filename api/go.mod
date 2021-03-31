@@ -11,11 +11,11 @@ require (
 	github.com/labstack/gommon v0.3.0
 	github.com/likexian/whois v1.9.0
 	github.com/likexian/whois-parser v1.20.2
-	github.com/rs/zerolog v1.20.0
+	github.com/rs/zerolog v1.21.0
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
 	github.com/thoas/go-funk v0.8.0
 	github.com/tidwall/gjson v1.6.8
-	github.com/ziflex/lecho/v2 v2.1.0
+	github.com/ziflex/lecho/v2 v2.2.0
 )
