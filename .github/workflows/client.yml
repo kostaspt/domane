@@ -75,7 +75,7 @@ jobs:
           password: ${{ secrets.DOCKER_LOGIN_TOKEN }}
 
       - name: Build Docker Image
-        run: docker build -t ghcr.io/kostaspt/domane-client:latest .
+        run: docker build --build-arg DOMAIN=domane.io -t ghcr.io/kostaspt/domane-client:latest .
 
       - name: Push to Registry
         run: docker push ghcr.io/kostaspt/domane-client:latest
