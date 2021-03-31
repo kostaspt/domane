@@ -18,5 +18,8 @@ module.exports = (phase) => {
 
       return config;
     },
+    future: {
+      webpack5: true,
+    },
   };
 };
