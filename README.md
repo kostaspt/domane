@@ -24,5 +24,5 @@ Once everything is set, run:
 $ docker-compose up -d --build --force-recreate --remove-orphans
 
 // Alternative, for unix with `make` installed:
-$ make serve-local
+$ make
 ```

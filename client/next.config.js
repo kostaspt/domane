@@ -8,7 +8,7 @@ module.exports = (phase) => {
 
   return {
     publicRuntimeConfig: {
-      API_URL: isProd ? `${apiUrl}/api` : 'http://localhost:4000',
+      API_URL: isProd ? `${apiUrl}/api` : 'http://localhost:4001',
     },
     webpack(config) {
       config.module.rules.push({
