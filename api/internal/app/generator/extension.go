@@ -1,10 +1,17 @@
 package generator
 
 import (
+	_ "embed"
+	"encoding/json"
 	"regexp"
+
+	"github.com/rs/zerolog/log"
 
 	"github.com/kostaspt/domane/api/pkg/parser"
 )
+
+//go:embed tlds.json
+var tlds string
 
 func CommonExtensions(text string) Results {
 	extensions := TopExtensions()
@@ -47,7 +54,7 @@ func CommonExtensionsHyphenated(text string) Results {
 }
 
 func ShortExtensions(text string) Results {
-	extensions := AllExtensions()
+	extensions := allExtensions()
 
 	text = parser.Clean(text)
 
@@ -74,8 +81,14 @@ func ShortExtensions(text string) Results {
 	return results
 }
 
-func AllExtensions() []string {
-	extensions := allExtensions()
+func allExtensions() []string {
+	var extensions map[string]string
+
+	err := json.Unmarshal([]byte(tlds), &extensions)
+	if err != nil {
+		log.Err(err).Send()
+		return []string{}
+	}
 
 	es := make([]string, 0, len(extensions))
 	for _, tx := range extensions {
