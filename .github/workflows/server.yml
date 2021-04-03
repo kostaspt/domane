@@ -27,4 +27,5 @@ jobs:
             git checkout main && \
             git reset --hard origin/main && \
             git pull --rebase && \
-            docker-compose up -d --force-recreate;
+            export $(cat .env | sed 's/#.*//g' | xargs) && \
+            docker stack deploy -c ./docker-compose.yml --prune domane;

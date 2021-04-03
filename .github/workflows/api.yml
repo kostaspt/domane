@@ -84,4 +84,4 @@ jobs:
           username: ${{ secrets.DOMANE_SSH_USER }}
           passphrase: ${{ secrets.DOMANE_SSH_PASSPHRASE }}
           key: ${{ secrets.DOMANE_SSH_PRIVATE_KEY}}
-          script: cd /app && docker-compose pull api && docker-compose up -d --force-recreate api;
+          script: cd /app && docker service update --force domane_api;
