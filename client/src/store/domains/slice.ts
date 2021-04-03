@@ -1,6 +1,6 @@
 import { RootState } from '@store';
 import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
-import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@store/status';
+import { STATUS_FAILURE, STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '@store/status';
 
 export const name: string = 'domains';
 
@@ -33,10 +33,13 @@ const slice = createSlice({
       state.status = STATUS_SUCCESS;
       adapter.addMany(state, payload);
     },
+    fetchDataFailure(state) {
+      state.status = STATUS_FAILURE;
+    },
   },
 });
 
 export const selectors = adapter.getSelectors((state: RootState) => state[name]);
 
-export const { fetchDataSuccess } = slice.actions;
+export const { fetchDataSuccess, fetchDataFailure } = slice.actions;
 export default slice.reducer;
