@@ -6,7 +6,7 @@ type DomainViewProps = {
 
 export default function DomainView({ domain }: DomainViewProps) {
   return (
-    <HStack spacing={3}>
+    <HStack spacing={3} data-testid="domain-view-text">
       <span>😞</span>
       <HStack spacing={1}>
         <Link href={`http://${domain}`} color="brand" isExternal>
