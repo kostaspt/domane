@@ -12,7 +12,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/src/**/?(*.)test.{ts,tsx}'],
   transform: {
-    "\\.svg$": "jest-svg-transformer"
+    '\\.svg$': 'jest-svg-transformer',
   },
   verbose: true,
   globals: {
