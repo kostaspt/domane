@@ -2,7 +2,7 @@ import { render } from '@store/test-utils';
 import { screen } from '@testing-library/react';
 import Results from './index';
 
-it('should display a list of results', async () => {
+it('should display a list of results', () => {
   render(<Results />, {
     initialState: {
       availabilities: {
@@ -51,7 +51,6 @@ it('should display a list of results', async () => {
     },
   });
 
-  // screen.debug();
   expect(screen.getAllByTestId('list-header')[0]).toHaveTextContent('Extension');
   expect(screen.getAllByTestId('list-header')[1]).toHaveTextContent('Similar');
 
