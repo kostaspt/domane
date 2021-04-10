@@ -33,7 +33,7 @@ function* setupConnection() {
   if (isNode) return;
 
   const wsURL = API_URL.replace('http', 'ws');
-  ws = new ReconnectingWebSocket(`${wsURL}/ws/availabilities`);
+  ws = new ReconnectingWebSocket(`${wsURL}/ws/whois`);
 
   const channel: EventChannel<any> = yield call(createEventChannel);
   while (true) {
