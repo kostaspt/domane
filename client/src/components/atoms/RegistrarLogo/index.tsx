@@ -4,26 +4,31 @@ import GoDaddyLogo from '@assets/logos/godaddy.svg';
 import NamecheapLogo from '@assets/logos/namecheap.svg';
 import { useColorModeValue } from '@chakra-ui/react';
 import { getColor } from '@chakra-ui/theme-tools';
-import styled from '@emotion/styled';
+import isPropValid from '@emotion/is-prop-valid';
+import styled, { StyledOptions } from '@emotion/styled';
 
 type RegistrarLogoProps = {
   name: string;
   width?: number;
 };
 
-const StyledGoDaddyLogo = styled(GoDaddyLogo)`
+const styledOptions: StyledOptions<any> = {
+  shouldForwardProp: (prop: PropertyKey) => isPropValid(prop.toString()),
+};
+
+const StyledGoDaddyLogo = styled(GoDaddyLogo, styledOptions)`
   .godaddy_svg__text {
     fill: ${({ textColor }) => textColor};
   }
 `;
 
-const StyledNamecheapLogo = styled(NamecheapLogo)`
+const StyledNamecheapLogo = styled(NamecheapLogo, styledOptions)`
   .namecheap_svg__text {
     fill: ${({ textColor }) => textColor};
   }
 `;
 
-const StyledDynadotLogo = styled(DynadotLogo)`
+const StyledDynadotLogo = styled(DynadotLogo, styledOptions)`
   .dynadot_svg__text {
     fill: ${({ textColor }) => textColor};
   }
