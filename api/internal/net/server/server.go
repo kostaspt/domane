@@ -47,7 +47,7 @@ func Start() error {
 
 	// WebSockets
 	ws := WSHandler.New()
-	e.GET("/ws/availabilities", ws.Availabilities)
+	e.GET("/ws/whois", ws.Whois)
 
 	// Start server
 	return e.Start(fmt.Sprintf(":%d", viper.GetInt("port")))
