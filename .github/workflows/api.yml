@@ -84,4 +84,12 @@ jobs:
           username: ${{ secrets.DOMANE_SSH_USER }}
           passphrase: ${{ secrets.DOMANE_SSH_PASSPHRASE }}
           key: ${{ secrets.DOMANE_SSH_PRIVATE_KEY}}
-          script: cd /app && docker service update --force domane_api;
+          script: |
+            cd /app && \
+            git stash && \
+            git checkout main && \
+            git reset --hard origin/main && \
+            git pull --rebase && \
+            export $(cat .env | sed 's/#.*//g' | xargs) && \
+            docker stack deploy -c ./docker-compose.yml -c ./docker-compose-prod.yml --prune domane && \
+            docker service update --force domane_api;
