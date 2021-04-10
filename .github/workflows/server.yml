@@ -7,11 +7,21 @@ on:
       - .github/workflows/server.yml
       - docker/**
       - docker-compose.yml
+  workflow_run:
+    workflows:
+      - Api
+      - Client
+    branches:
+      - main
+    types:
+      - completed
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'push' }}
 
     steps:
       - name: Deploy
