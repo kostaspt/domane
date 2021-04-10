@@ -22,13 +22,6 @@ services:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:?}
     networks:
       - internal
-    deploy:
-      mode: global
-      placement:
-        constraints: [node.role == manager]
-      resources:
-        limits:
-          memory: 32M
 
   client:
     image: ghcr.io/kostaspt/domane-client:latest
@@ -43,11 +36,6 @@ services:
       - CLIENT_PORT=${CLIENT_PORT:?}
     networks:
       - internal
-    deploy:
-      replicas: 2
-      resources:
-        limits:
-          memory: 128M
 
   api:
     image: ghcr.io/kostaspt/domane-api:latest
@@ -58,11 +46,6 @@ services:
       - API_PORT=${API_PORT:?}
     networks:
       - internal
-    deploy:
-      replicas: 2
-      resources:
-        limits:
-          memory: 64M
 
   prometheus:
     image: prom/prometheus:v2.26.0
@@ -72,12 +55,6 @@ services:
       - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
       - internal
-    deploy:
-      mode: replicated
-      replicas: 1
-      resources:
-        limits:
-          memory: 256M
 
   grafana:
     image: grafana/grafana:7.5.2
@@ -87,9 +64,3 @@ services:
       - ./docker/grafana/custom.ini:/etc/grafana/grafana.ini
     networks:
       - internal
-    deploy:
-      mode: replicated
-      replicas: 1
-      resources:
-        limits:
-          memory: 256M

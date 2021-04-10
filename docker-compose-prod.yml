@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  proxy:
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+      resources:
+        limits:
+          memory: 32M
+
+  client:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 128M
+
+  api:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 64M
+
+  prometheus:
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          memory: 256M
+
+  grafana:
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          memory: 256M

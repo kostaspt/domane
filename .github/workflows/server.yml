@@ -28,4 +28,4 @@ jobs:
             git reset --hard origin/main && \
             git pull --rebase && \
             export $(cat .env | sed 's/#.*//g' | xargs) && \
-            docker stack deploy -c ./docker-compose.yml --prune domane;
+            docker stack deploy -c ./docker-compose.yml -c ./docker-compose-prod.yml --prune domane;
