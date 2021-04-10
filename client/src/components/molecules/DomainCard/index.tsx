@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 type DomainCardProps = {
   domain: string;
-  isAvailable: boolean | undefined;
+  isAvailable?: boolean;
   handleClick: () => void;
 };
 

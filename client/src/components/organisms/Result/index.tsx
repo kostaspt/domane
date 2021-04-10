@@ -29,7 +29,7 @@ export default function Result({ id }: ResultProps) {
   return (
     <>
       <DomainCard domain={domain} isAvailable={isAvailable} handleClick={onOpen} />
-      <DomainModal domain={domain} isOpen={isOpen} handleClose={onClose} />
+      <DomainModal domain={domain} isAvailable={isAvailable} isOpen={isOpen} handleClose={onClose} />
     </>
   );
 }

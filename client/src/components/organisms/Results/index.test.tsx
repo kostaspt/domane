@@ -1,9 +1,9 @@
-import { render } from '@store/test-utils';
+import { renderWithStore } from '@test/utils';
 import { screen } from '@testing-library/react';
 import Results from './index';
 
 it('should display a list of results', () => {
-  render(<Results />, {
+  renderWithStore(<Results />, {
     initialState: {
       availabilities: {
         ids: ['test.com', 'test.net', 'try.com'],

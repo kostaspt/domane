@@ -7,17 +7,18 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  SimpleGrid,
 } from '@chakra-ui/react';
-import Registrar from '@components/molecules/Registrar';
+import DomainBuy from '@components/molecules/DomainBuy';
+import DomainView from '@components/molecules/DomainView';
 
 type DomainModalProps = {
   domain: string;
+  isAvailable?: boolean;
   isOpen: boolean;
   handleClose: () => void;
 };
 
-export default function DomainModal({ domain, isOpen, handleClose }: DomainModalProps) {
+export default function DomainModal({ domain, isAvailable, isOpen, handleClose }: DomainModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={handleClose} size="xl">
       <ModalOverlay />
@@ -29,14 +30,11 @@ export default function DomainModal({ domain, isOpen, handleClose }: DomainModal
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Heading as="h6" size="xs" marginBottom={4} textAlign="center">
-            Buy now
-          </Heading>
-          <SimpleGrid columns={3} spacing={4}>
-            {['namecheap', 'godaddy', 'dynadot'].map((name) => (
-              <Registrar name={name} domain={domain} key={name} />
-            ))}
-          </SimpleGrid>
+          {isAvailable === false ? (
+            <DomainView domain={domain} />
+          ) : (
+            <DomainBuy domain={domain} isAvailable={isAvailable} />
+          )}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

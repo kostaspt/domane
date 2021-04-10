@@ -27,7 +27,8 @@
       "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
       "@store": ["./store"],
-      "@store/*": ["./store/*"]
+      "@store/*": ["./store/*"],
+      "@test/*": ["../test/*"]
     }
   },
   "exclude": [
