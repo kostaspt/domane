@@ -9,7 +9,7 @@ volumes:
 
 services:
   proxy:
-    image: haproxy:2.3-alpine
+    image: haproxy:2.4-alpine
     restart: unless-stopped
     ports:
       - 80:80
@@ -48,7 +48,7 @@ services:
       - internal
 
   prometheus:
-    image: prom/prometheus:v2.26.0
+    image: prom/prometheus:v2.27.1
     restart: unless-stopped
     volumes:
       - prometheus_data:/prometheus
@@ -57,7 +57,7 @@ services:
       - internal
 
   grafana:
-    image: grafana/grafana:7.5.2
+    image: grafana/grafana:7.5.7
     restart: unless-stopped
     volumes:
       - grafana_data:/var/lib/grafana
