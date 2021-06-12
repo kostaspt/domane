@@ -20,8 +20,8 @@ RUN make build
 FROM alpine:3.13.5
 WORKDIR /app
 
-COPY --from=build /go/src/app/bin/domane /app
+COPY --from=build /go/src/app/bin/start /app
 
 EXPOSE $API_PORT
 
-CMD ["sh" , "-c", "./domane start -p ${API_PORT}"]
+CMD ["sh" , "-c", "./start -p ${API_PORT}"]

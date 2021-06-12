@@ -2,20 +2,31 @@ package server
 
 import (
 	"fmt"
-	"os"
+	"time"
 
+	transphttp "github.com/go-kratos/kratos/v2/transport/http"
+	"github.com/google/wire"
+	"github.com/kostaspt/domane/api/config"
+	"github.com/kostaspt/domane/api/internal/net/rest"
+	"github.com/kostaspt/domane/api/internal/net/ws"
+	"github.com/kostaspt/domane/api/pkg/logger"
 	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	elog "github.com/labstack/gommon/log"
-	"github.com/spf13/viper"
-	"github.com/ziflex/lecho/v2"
-
-	HTTPHandler "github.com/kostaspt/domane/api/internal/net/http"
-	WSHandler "github.com/kostaspt/domane/api/internal/net/websockets"
 )
 
-func Start() error {
+var ProviderSet = wire.NewSet(NewServer)
+
+func NewServer(c *config.Config, rh *rest.Handler, wh *ws.Handler) *transphttp.Server {
+	opts := []transphttp.ServerOption{
+		transphttp.Timeout(10 * time.Second),
+		transphttp.Logger(logger.NewWrapper()),
+	}
+
+	if c.Port > 0 {
+		opts = append(opts, transphttp.Address(fmt.Sprintf("[::]:%d", c.Port)))
+	}
+
 	e := echo.New()
 
 	// Middleware
@@ -23,32 +34,26 @@ func Start() error {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{
 			"http://localhost:3000",
-			"http://" + viper.GetString("DOMAIN"),
-			"https://" + viper.GetString("DOMAIN"),
+			"http://" + c.Domain,
+			"https://" + c.Domain,
 		},
 	}))
-	e.Logger = lecho.New(
-		os.Stdout,
-		lecho.WithLevel(elog.DEBUG),
-		lecho.WithTimestamp(),
-		lecho.WithCaller(),
-	)
-	e.HideBanner = true
 
 	// Prometheus
 	p := prometheus.NewPrometheus("echo", nil)
 	p.Use(e)
 
-	// HTTP
-	http := HTTPHandler.New()
-	e.GET("/", http.RootIndex)
-	e.POST("/domains/extensions", http.DomainsExtensions)
-	e.POST("/domains/similars", http.DomainsSimilars)
+	// Rest
+	e.GET("/", rh.RootIndex)
+	e.POST("/domains/extensions", rh.DomainsExtensions)
+	e.POST("/domains/similars", rh.DomainsSimilars)
 
 	// WebSockets
-	ws := WSHandler.New()
-	e.GET("/ws/whois", ws.Whois)
+	e.GET("/ws/whois", wh.Whois)
 
-	// Start server
-	return e.Start(fmt.Sprintf(":%d", viper.GetInt("port")))
+	srv := transphttp.NewServer(opts...)
+
+	srv.HandlePrefix("/", e)
+
+	return srv
 }

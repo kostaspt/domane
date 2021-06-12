@@ -1,4 +1,4 @@
-package http
+package rest
 
 import (
 	"io"
@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kostaspt/domane/api/config"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"github.com/tidwall/gjson"
@@ -19,7 +20,8 @@ func TestHandler_DomainsExtensions(t *testing.T) {
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec = httptest.NewRecorder()
 
-		err = New().DomainsExtensions(e.NewContext(req, rec))
+		c, _ := config.New()
+		err = NewHandler(c).DomainsExtensions(e.NewContext(req, rec))
 		return
 	}
 
@@ -55,7 +57,8 @@ func TestHandler_DomainsSimilar(t *testing.T) {
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec = httptest.NewRecorder()
 
-		err = New().DomainsSimilars(e.NewContext(req, rec))
+		c, _ := config.New()
+		err = NewHandler(c).DomainsSimilars(e.NewContext(req, rec))
 		return
 	}
 

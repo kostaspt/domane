@@ -1,4 +1,4 @@
-package http
+package rest
 
 import (
 	"fmt"
@@ -6,12 +6,11 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"github.com/spf13/viper"
 )
 
-func (Handler) RootIndex(ctx echo.Context) error {
+func (h Handler) RootIndex(ctx echo.Context) error {
 	resp := map[string]interface{}{
-		"message":  fmt.Sprintf("Domane API %s", viper.GetString("VERSION")),
+		"message":  fmt.Sprintf("Domane API %s", h.config.Version),
 		"datetime": time.Now(),
 	}
 

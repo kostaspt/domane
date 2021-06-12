@@ -1,10 +1,11 @@
-BINARY_FILE=./bin/domane
+GOPATH:=$(shell go env GOPATH)
+VERSION=$(shell git describe --tags --always)
 DIRECTORIES=go list -f '{{.Dir}}' ./... | grep -v /vendor/
 PACKAGES=go list ./... | grep -v /vendor/
 
 .PHONY: build
 build: clean
-	go build -o ${BINARY_FILE} main.go
+	mkdir -p bin/ && go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/ `$(call DIRECTORIES)`
 
 .PHONY: checks
 checks: format vet
@@ -12,7 +13,7 @@ checks: format vet
 .PHONY: clean
 clean:
 	go clean
-	rm -f ${BINARY_FILE}
+	rm -rf ./bin
 
 .PHONY: deps
 deps:
@@ -24,9 +25,14 @@ deps:
 format:
 	gofmt -w `$(call DIRECTORIES)`
 
+.PHONY: generate
+generate:
+	find . -name "wire_gen.go" -type f | xargs rm
+	go generate `$(call DIRECTORIES)`
+
 .PHONY: start
 start:
-	go run main.go start
+	go run ./cmd/start/main.go
 
 .PHONY: test
 test:

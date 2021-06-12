@@ -1,4 +1,4 @@
-package websockets
+package ws
 
 import (
 	"github.com/labstack/echo/v4"
@@ -6,13 +6,13 @@ import (
 	"github.com/kostaspt/domane/api/internal/app/whois"
 )
 
-func (Handler) Whois(ctx echo.Context) error {
+func (h Handler) Whois(ctx echo.Context) error {
 	ws, err := upgrader.Upgrade(ctx.Response(), ctx.Request(), nil)
 	if err != nil {
 		return err
 	}
 
-	err = writeWelcomeMessage(ws)
+	err = h.writeWelcomeMessage(ws)
 	if err != nil {
 		return err
 	}
