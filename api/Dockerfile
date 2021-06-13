@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 WORKDIR /go/src/app
 
 # Install system dependencies
-RUN apk add --no-cache make
+RUN apk add --no-cache make git
 
 # Install dependencies
 COPY go.mod go.sum ./
