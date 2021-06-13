@@ -30,10 +30,6 @@ generate:
 	find . -name "wire_gen.go" -type f | xargs rm
 	go generate `$(call DIRECTORIES)`
 
-.PHONY: start
-start:
-	go run ./cmd/start/main.go
-
 .PHONY: test
 test:
 	go test -a -mod=vendor `$(call PACKAGES)`
