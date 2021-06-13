@@ -38,6 +38,10 @@ start:
 test:
 	go test -a -mod=vendor `$(call PACKAGES)`
 
+.PHONY: test-race
+test-race:
+	go test -a -race -mod=vendor `$(call PACKAGES)`
+
 .PHONY: vet
 vet:
 	go vet -mod=vendor `$(call PACKAGES)`

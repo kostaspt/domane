@@ -7,6 +7,7 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/kostaspt/domane/api/config"
 	"github.com/kostaspt/domane/api/pkg/logger"
+	"github.com/spf13/pflag"
 )
 
 var (
@@ -25,7 +26,10 @@ func newApp(srv *http.Server) *kratos.App {
 func main() {
 	logger.Setup(Name, Version)
 
-	c, err := config.New()
+	var port uint16
+	pflag.Uint16VarP(&port, "port", "p", 4000, "Server's port")
+
+	c, err := config.New(port)
 	if err != nil {
 		panic(err)
 	}

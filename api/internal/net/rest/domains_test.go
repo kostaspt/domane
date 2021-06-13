@@ -14,13 +14,14 @@ import (
 )
 
 func TestHandler_DomainsExtensions(t *testing.T) {
+	c, _ := config.New(0)
+
 	initTestCase := func(body io.Reader) (rec *httptest.ResponseRecorder, err error) {
 		e := echo.New()
 		req := httptest.NewRequest(http.MethodPost, "/", body)
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec = httptest.NewRecorder()
 
-		c, _ := config.New()
 		err = NewHandler(c).DomainsExtensions(e.NewContext(req, rec))
 		return
 	}
@@ -51,13 +52,14 @@ func TestHandler_DomainsExtensions(t *testing.T) {
 }
 
 func TestHandler_DomainsSimilar(t *testing.T) {
+	c, _ := config.New(0)
+
 	initTestCase := func(body io.Reader) (rec *httptest.ResponseRecorder, err error) {
 		e := echo.New()
 		req := httptest.NewRequest(http.MethodPost, "/", body)
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec = httptest.NewRecorder()
 
-		c, _ := config.New()
 		err = NewHandler(c).DomainsSimilars(e.NewContext(req, rec))
 		return
 	}

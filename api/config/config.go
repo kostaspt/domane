@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/rs/zerolog/log"
-	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 )
 
@@ -12,13 +11,11 @@ type Config struct {
 	Port    uint16
 }
 
-func New() (c *Config, err error) {
+func New(port uint16) (c *Config, err error) {
 	v := initViper()
 
-	pflag.IntP("port", "p", 4000, "Server's port")
-	err = v.BindPFlag("port", pflag.Lookup("port"))
-	if err != nil {
-		return
+	if port > 0 {
+		v.Set("port", port)
 	}
 
 	if err = v.ReadInConfig(); err != nil {
