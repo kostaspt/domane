@@ -49,7 +49,7 @@ jobs:
           branch: ${{ github.head_ref }}
 
       - name: Run tests
-        run: make test
+        run: make test-race
 
   docker:
     name: Build docker image
