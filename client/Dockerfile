@@ -1,5 +1,5 @@
 ### Build
-FROM node:16.2.0-alpine as builder
+FROM node:16.3.0-alpine as builder
 
 LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
 
