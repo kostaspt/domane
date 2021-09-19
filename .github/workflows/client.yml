@@ -38,7 +38,7 @@ jobs:
 
       - name: Download packages
         run: (yarn check --integrity && yarn check --verify-tree) || yarn install --frozen-lockfile --network-timeout 1000000
-      
+
       - name: Format
         run: yarn run format
 
