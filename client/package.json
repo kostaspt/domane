@@ -15,7 +15,7 @@
     "@chakra-ui/theme-tools": "^1.1.7",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@reduxjs/toolkit": "^1.6.0",
+    "@reduxjs/toolkit": "^1.6.2",
     "axios": "^0.21.1",
     "detect-node": "^2.1.0",
     "framer-motion": "^4.1.17",
