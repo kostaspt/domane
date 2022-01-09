@@ -39,6 +39,7 @@ const slice = createSlice({
   },
 });
 
+// @ts-ignore
 export const selectors = adapter.getSelectors((state: RootState) => state[name]);
 
 export const { fetchDataSuccess, fetchDataFailure } = slice.actions;

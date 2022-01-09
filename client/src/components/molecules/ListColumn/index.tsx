@@ -6,5 +6,5 @@ type Props = {
 };
 
 export default function ListColumn({ children }: Props) {
-  return <Box display="flex" flexDirection="column" alignItems="center" children={children} />;
+  return <Box display="flex" flexDirection="column" alignItems="center">{children}</Box>;
 }

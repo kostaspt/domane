@@ -7,6 +7,9 @@ module.exports = (phase) => {
   const apiUrl = apiDomain.match(/\.local(host)?$/) ? `http://${apiDomain}` : `https://${apiDomain}`;
 
   return {
+    experimental: {
+      outputStandalone: true,
+    },
     publicRuntimeConfig: {
       API_URL: isProd ? `${apiUrl}/api` : 'http://localhost:4001',
     },
