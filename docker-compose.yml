@@ -12,7 +12,10 @@ services:
     image: haproxy:2.4-alpine
     restart: unless-stopped
     ports:
-      - 80:80
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
     volumes:
       - ./docker/proxy:/usr/local/etc/haproxy:ro
     environment:

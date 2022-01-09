@@ -3,9 +3,8 @@ version: "3.8"
 services:
   proxy:
     deploy:
-      mode: global
-      placement:
-        constraints: [node.role == manager]
+      mode: replicated
+      replicas: 1
       resources:
         limits:
           memory: 32M
