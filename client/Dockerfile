@@ -1,19 +1,19 @@
 ### Deps
-FROM node:16-alpine AS deps
+FROM node:17-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --network-timeout 1000000
 
 ### Builder
-FROM node:16-alpine AS builder
+FROM node:17-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN yarn build
 
 ### Runner
-FROM node:16-alpine AS runner
+FROM node:17-alpine AS runner
 WORKDIR /app
 
 LABEL org.opencontainers.image.source="https://github.com/kostaspt/domane"
