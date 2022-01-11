@@ -2,6 +2,7 @@ version: "3.8"
 
 networks:
   internal:
+    driver: overlay
 
 volumes:
   grafana_data:
@@ -28,7 +29,7 @@ services:
 
   client:
     image: ghcr.io/kostaspt/domane-client:latest
-    build: 
+    build:
       context: ./client
       args:
         - DOMAIN=${DOMAIN:?}

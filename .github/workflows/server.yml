@@ -29,8 +29,7 @@ jobs:
         with:
           host: ${{ secrets.DOMANE_SSH_HOST }}
           username: ${{ secrets.DOMANE_SSH_USER }}
-          passphrase: ${{ secrets.DOMANE_SSH_PASSPHRASE }}
-          key: ${{ secrets.DOMANE_SSH_PRIVATE_KEY}}
+          key: ${{ secrets.DOMANE_SSH_PRIVATE_KEY }}
           script: |
             cd /app && \
             git stash && \
