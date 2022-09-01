@@ -12,7 +12,7 @@ require (
 	github.com/labstack/echo/v4 v4.3.0
 	github.com/likexian/whois v1.12.1
 	github.com/likexian/whois-parser v1.20.4
-	github.com/rs/zerolog v1.22.0
+	github.com/rs/zerolog v1.28.0
 	github.com/spf13/pflag v1.0.3
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
