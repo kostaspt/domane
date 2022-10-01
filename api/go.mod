@@ -13,9 +13,9 @@ require (
 	github.com/likexian/whois v1.12.1
 	github.com/likexian/whois-parser v1.20.4
 	github.com/rs/zerolog v1.22.0
-	github.com/spf13/pflag v1.0.3
-	github.com/spf13/viper v1.7.1
-	github.com/stretchr/testify v1.7.0
+	github.com/spf13/pflag v1.0.5
+	github.com/spf13/viper v1.13.0
+	github.com/stretchr/testify v1.8.0
 	github.com/thoas/go-funk v0.8.0
 	github.com/tidwall/gjson v1.8.0
 )
