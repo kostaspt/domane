@@ -9,7 +9,7 @@ require (
 	github.com/gorilla/websocket v1.4.2
 	github.com/kostaspt/go-datamuse/v2 v2.0.1
 	github.com/labstack/echo-contrib v0.11.0
-	github.com/labstack/echo/v4 v4.3.0
+	github.com/labstack/echo/v4 v4.9.1
 	github.com/likexian/whois v1.12.1
 	github.com/likexian/whois-parser v1.20.4
 	github.com/rs/zerolog v1.22.0
