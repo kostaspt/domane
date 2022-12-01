@@ -17,5 +17,5 @@ require (
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
 	github.com/thoas/go-funk v0.8.0
-	github.com/tidwall/gjson v1.8.0
+	github.com/tidwall/gjson v1.14.4
 )
